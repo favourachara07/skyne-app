@@ -1,0 +1,23 @@
+// Mock product database optimized for African skin types
+export const PRODUCT_DATABASE = {
+  cleansers: [
+    { id: 1, name: 'Gentle Cream Cleanser', brand: 'SheaMoisture', type: 'cream', skinTypes: ['dry', 'sensitive'], melaninFriendly: true, climate: 'tropical' },
+    { id: 2, name: 'Foaming Gel Cleanser', brand: 'CeraVe', type: 'gel', skinTypes: ['oily', 'combination'], melaninFriendly: true, climate: 'humid' },
+    { id: 3, name: 'Oil Cleansing Balm', brand: 'Fenty Skin', type: 'oil', skinTypes: ['all'], melaninFriendly: true, climate: 'all' }
+  ],
+  moisturizers: [
+    { id: 4, name: 'Hyaluronic Acid Moisturizer', brand: 'The Ordinary', type: 'lightweight', skinTypes: ['oily', 'combination'], melaninFriendly: true, climate: 'humid' },
+    { id: 5, name: 'Shea Butter Moisturizer', brand: 'SheaMoisture', type: 'rich', skinTypes: ['dry', 'sensitive'], melaninFriendly: true, climate: 'dry' },
+    { id: 6, name: 'Niacinamide Gel Moisturizer', brand: 'Glossier', type: 'gel', skinTypes: ['oily'], melaninFriendly: true, climate: 'tropical' }
+  ],
+  treatments: [
+    { id: 7, name: 'Vitamin C Serum', brand: 'Skinceuticals', type: 'antioxidant', concerns: ['hyperpigmentation', 'dullness'], melaninFriendly: true, timeOfDay: 'AM' },
+    { id: 8, name: 'Kojic Acid Treatment', brand: 'Murad', type: 'brightening', concerns: ['dark spots', 'hyperpigmentation'], melaninFriendly: true, timeOfDay: 'PM' },
+    { id: 9, name: 'Retinol Serum', brand: 'Paula\'s Choice', type: 'anti-aging', concerns: ['fine lines', 'texture'], melaninFriendly: true, timeOfDay: 'PM' }
+  ],
+  sunscreens: [
+    { id: 10, name: 'Tinted Mineral SPF 50', brand: 'Black Girl Sunscreen', type: 'mineral', skinTypes: ['all'], melaninFriendly: true, tinted: true },
+    { id: 11, name: 'Invisible Fluid SPF 30', brand: 'La Roche Posay', type: 'chemical', skinTypes: ['oily'], melaninFriendly: true, tinted: false },
+    { id: 12, name: 'Moisturizing SPF 45', brand: 'Aveeno', type: 'hybrid', skinTypes: ['dry', 'sensitive'], melaninFriendly: true, tinted: false }
+  ]
+};
