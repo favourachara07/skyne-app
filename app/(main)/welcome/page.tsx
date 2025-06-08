@@ -1,31 +1,43 @@
-'use client'
+"use client";
 
-import React, { useState, useRef } from 'react';
-import { Camera, Upload, Brain, Droplets, Sun, Palette, Shield, ArrowRight, ArrowLeft, CheckCircle } from 'lucide-react';
-import Image from 'next/image';
-import { mockResults, quizQuestions } from '@/app/components/welcome/array';
+import React, { useState, useRef } from "react";
+import {
+  Camera,
+  Upload,
+  Brain,
+  Droplets,
+  Sun,
+  Palette,
+  Shield,
+  ArrowRight,
+  ArrowLeft,
+  CheckCircle,
+} from "lucide-react";
+import Image from "next/image";
+import { mockResults, quizQuestions } from "@/app/components/welcome/array";
 
-interface AnalysisResults  {
+interface AnalysisResults {
   hydration: { score: number; level: string; description: string };
   texture: { score: number; level: string; description: string };
   pigmentation: { score: number; level: string; description: string };
   sunDamage: { score: number; level: string; description: string };
-};
+}
 
 const SkinDiagnosticTool = () => {
   const [currentStep, setCurrentStep] = useState(0);
   const [quizAnswers, setQuizAnswers] = useState<Record<string, any>>({});
   const [selfieFile, setSelfieFile] = useState<File | null>(null);
   const [selfiePreview, setSelfiePreview] = useState<string | null>(null);
-  const [analysisResults, setAnalysisResults] = useState<AnalysisResults | null>(null);
+  const [analysisResults, setAnalysisResults] =
+    useState<AnalysisResults | null>(null);
   const [isAnalyzing, setIsAnalyzing] = useState(false);
   const [showResults, setShowResults] = useState(false);
   const fileInputRef = useRef<HTMLInputElement | null>(null);
 
   const handleQuizAnswer = (questionId: string, answer: any) => {
-    setQuizAnswers(prev => ({
+    setQuizAnswers((prev) => ({
       ...prev,
-      [questionId]: answer
+      [questionId]: answer,
     }));
   };
 
@@ -36,7 +48,9 @@ const SkinDiagnosticTool = () => {
       const reader = new FileReader();
       reader.onload = (e) => {
         if (e.target) {
-          setSelfiePreview(typeof e.target.result === 'string' ? e.target.result : null);
+          setSelfiePreview(
+            typeof e.target.result === "string" ? e.target.result : null
+          );
         }
       };
       reader.readAsDataURL(file);
@@ -45,66 +59,73 @@ const SkinDiagnosticTool = () => {
 
   const simulateAIAnalysis = async () => {
     setIsAnalyzing(true);
-    
+
     // Simulate API call delay
-    await new Promise(resolve => setTimeout(resolve, 3000));
-    
+    await new Promise((resolve) => setTimeout(resolve, 3000));
+
     // Mock AI analysis results
-    
-    
+
     setAnalysisResults(mockResults as AnalysisResults);
     setIsAnalyzing(false);
     setShowResults(true);
   };
 
   const generatePersonalizedRegimen = () => {
-    const {  skinConcerns,  } = quizAnswers;
-    
+    const { skinConcerns } = quizAnswers;
+
     const baseProducts = {
       cleanser: {
-        name: 'Gentle Foaming Cleanser',
-        brand: 'CeraVe',
-        price: '₦8,500',
-        why: 'Removes impurities without stripping natural oils'
+        name: "Gentle Foaming Cleanser",
+        brand: "CeraVe",
+        price: "₦8,500",
+        why: "Removes impurities without stripping natural oils",
       },
       moisturizer: {
-        name: 'Daily Moisturizing Lotion',
-        brand: 'Neutrogena',
-        price: '₦6,200',
-        why: 'Provides long-lasting hydration for your skin type'
+        name: "Daily Moisturizing Lotion",
+        brand: "Neutrogena",
+        price: "₦6,200",
+        why: "Provides long-lasting hydration for your skin type",
       },
       sunscreen: {
-        name: 'Broad Spectrum SPF 50',
-        brand: 'La Roche-Posay',
-        price: '₦12,000',
-        why: 'Essential protection for Nigerian climate'
-      }
+        name: "Broad Spectrum SPF 50",
+        brand: "La Roche-Posay",
+        price: "₦12,000",
+        why: "Essential protection for Nigerian climate",
+      },
     };
 
     const additionalProducts = [];
-    
-    if (skinConcerns?.includes('acne')) {
+
+    if (skinConcerns?.includes("acne")) {
       additionalProducts.push({
-        name: 'Salicylic Acid Treatment',
-        brand: 'The Ordinary',
-        price: '₦4,800',
-        why: 'Targets acne and prevents future breakouts'
+        name: "Salicylic Acid Treatment",
+        brand: "The Ordinary",
+        price: "₦4,800",
+        why: "Targets acne and prevents future breakouts",
       });
     }
-    
-    if (skinConcerns?.includes('hyperpigmentation')) {
+
+    if (skinConcerns?.includes("hyperpigmentation")) {
       additionalProducts.push({
-        name: 'Vitamin C Serum',
-        brand: 'Olay',
-        price: '₦9,500',
-        why: 'Brightens skin and reduces dark spots'
+        name: "Vitamin C Serum",
+        brand: "Olay",
+        price: "₦9,500",
+        why: "Brightens skin and reduces dark spots",
       });
     }
 
     return {
-      morning: [baseProducts.cleanser, baseProducts.sunscreen, ...additionalProducts.slice(0, 1)],
-      evening: [baseProducts.cleanser, baseProducts.moisturizer, ...additionalProducts.slice(1)],
-      totalCost: '₦32,000 - ₦45,000'
+      morning: [
+        baseProducts.cleanser,
+        baseProducts.sunscreen,
+        ...additionalProducts.slice(0, 1),
+      ],
+      evening: [
+        baseProducts.cleanser,
+        baseProducts.moisturizer,
+        ...additionalProducts.slice(1),
+      ],
+      totalCost: "₦32,000 - ₦45,000",
     };
   };
 
@@ -138,13 +159,15 @@ const SkinDiagnosticTool = () => {
                 <div
                   key={index}
                   className={`w-2 h-2 rounded-full ${
-                    index <= currentStep ? 'bg-blue-500' : 'bg-gray-200'
+                    index <= currentStep ? "bg-chestnut" : "bg-gray-200"
                   }`}
                 />
               ))}
             </div>
           </div>
-          <h2 className="text-2xl font-bold text-gray-800 mb-6">{question.question}</h2>
+          <h2 className="text-2xl font-bold text-gray-800 mb-6">
+            {question.question}
+          </h2>
         </div>
 
         <div className="space-y-3">
@@ -163,18 +186,24 @@ const SkinDiagnosticTool = () => {
                 }
               }}
               className={`w-full p-4 text-left rounded-lg border-2 transition-all ${
-                question.multiple 
-                  ? (currentAnswer?.includes(option.value) ? 'border-blue-500 bg-blue-50' : 'border-gray-200 hover:border-gray-300')
-                  : (currentAnswer === option.value ? 'border-blue-500 bg-blue-50' : 'border-gray-200 hover:border-gray-300')
+                question.multiple
+                  ? currentAnswer?.includes(option.value)
+                    ? "border-chestnut bg-goldBrown/20"
+                    : "border-gray-200 hover:border-gray-300"
+                  : currentAnswer === option.value
+                  ? "border-chestnut bg-goldBrown/20"
+                  : "border-gray-200 hover:border-gray-300"
               }`}
             >
               <div className="flex items-center justify-between">
-                <span className="font-medium text-gray-800">{option.label}</span>
+                <span className="font-medium text-gray-800">
+                  {option.label}
+                </span>
                 {question.multiple && currentAnswer?.includes(option.value) && (
-                  <CheckCircle className="w-5 h-5 text-blue-500" />
+                  <CheckCircle className="w-5 h-5 text-chestnut" />
                 )}
                 {!question.multiple && currentAnswer === option.value && (
-                  <CheckCircle className="w-5 h-5 text-blue-500" />
+                  <CheckCircle className="w-5 h-5 text-chestnut" />
                 )}
               </div>
             </button>
@@ -192,8 +221,11 @@ const SkinDiagnosticTool = () => {
           </button>
           <button
             onClick={nextStep}
-            disabled={!currentAnswer || (question.multiple && currentAnswer.length === 0)}
-            className="flex items-center px-6 py-3 bg-blue-600 text-white rounded-lg hover:bg-blue-700 disabled:opacity-50 disabled:cursor-not-allowed"
+            disabled={
+              !currentAnswer ||
+              (question.multiple && currentAnswer.length === 0)
+            }
+            className="flex items-center px-6 py-3 bg-cocoa text-white rounded-lg hover:bg-caramel disabled:opacity-50 disabled:cursor-not-allowed"
           >
             Next
             <ArrowRight className="w-4 h-4 ml-2" />
@@ -205,17 +237,20 @@ const SkinDiagnosticTool = () => {
 
   const renderSelfieUpload = () => (
     <div className="max-w-2xl mx-auto p-6 bg-white rounded-2xl shadow-lg">
-      <h2 className="text-2xl font-bold text-gray-800 mb-4">Upload Your Selfie (Optional)</h2>
+      <h2 className="text-2xl font-bold text-gray-800 mb-4">
+        Upload Your Selfie (Optional)
+      </h2>
       <p className="text-gray-600 mb-6">
-        Upload a clear selfie for AI-powered skin analysis. This will help us provide more accurate recommendations.
+        Upload a clear selfie for AI-powered skin analysis. This will help us
+        provide more accurate recommendations.
       </p>
 
       <div className="border-2 border-dashed border-gray-300 rounded-lg p-8 text-center">
         {selfiePreview ? (
           <div className="space-y-4">
             <Image
-            width={300}
-            height={300}
+              width={300}
+              height={300}
               src={selfiePreview}
               alt="Selfie preview"
               className="mx-auto max-w-xs max-h-64 object-cover rounded-lg"
@@ -223,7 +258,7 @@ const SkinDiagnosticTool = () => {
             <div className="space-x-4">
               <button
                 onClick={() => fileInputRef.current?.click()}
-                className="px-4 py-2 bg-blue-600 text-white rounded-lg hover:bg-blue-700"
+                className="px-4 py-2 bg-mahogany text-white rounded-lg hover:bg-chestnut"
               >
                 Change Photo
               </button>
@@ -244,7 +279,7 @@ const SkinDiagnosticTool = () => {
             <div>
               <button
                 onClick={() => fileInputRef.current?.click()}
-                className="flex items-center justify-center mx-auto px-6 py-3 bg-blue-600 text-white rounded-lg hover:bg-blue-700"
+                className="flex items-center justify-center mx-auto px-6 py-3 bg-caramel text-white rounded-lg hover:bg-mahogany transition-all"
               >
                 <Upload className="w-4 h-4 mr-2" />
                 Upload Selfie
@@ -275,7 +310,7 @@ const SkinDiagnosticTool = () => {
         </button>
         <button
           onClick={simulateAIAnalysis}
-          className="flex items-center px-6 py-3 bg-green-600 text-white rounded-lg hover:bg-green-700"
+          className="flex items-center px-6 py-3 bg-caramel text-white rounded-lg hover:bg-cocoa"
         >
           <Brain className="w-4 h-4 mr-2" />
           Analyze My Skin
@@ -286,17 +321,20 @@ const SkinDiagnosticTool = () => {
 
   const renderAnalyzing = () => (
     <div className="max-w-2xl mx-auto p-6 bg-white rounded-2xl shadow-lg text-center">
-      <div className="animate-spin w-16 h-16 border-4 border-blue-600 border-t-transparent rounded-full mx-auto mb-6"></div>
-      <h2 className="text-2xl font-bold text-gray-800 mb-4">Analyzing Your Skin...</h2>
+      <div className="animate-spin w-16 h-16 border-4 border-goldBrown border-t-transparent rounded-full mx-auto mb-6"></div>
+      <h2 className="text-2xl font-bold text-gray-800 mb-4">
+        Analyzing Your Skin...
+      </h2>
       <p className="text-gray-600">
-        Our AI is processing your selfie and quiz responses to create your personalized skincare analysis.
+        Our AI is processing your selfie and quiz responses to create your
+        personalized skincare analysis.
       </p>
     </div>
   );
 
   const renderResults = () => {
     const regimen = generatePersonalizedRegimen();
-    
+
     return (
       <div className="max-w-4xl mx-auto space-y-6">
         {/* Analysis Results */}
@@ -305,7 +343,7 @@ const SkinDiagnosticTool = () => {
             <Brain className="w-6 h-6 text-blue-600 mr-2" />
             Your Skin Analysis Results
           </h2>
-          
+
           <div className="grid md:grid-cols-2 gap-6">
             {/* Hydration */}
             <div className="bg-blue-50 rounded-lg p-4">
@@ -315,14 +353,20 @@ const SkinDiagnosticTool = () => {
               </div>
               <div className="flex items-center mb-2">
                 <div className="flex-1 bg-gray-200 rounded-full h-2 mr-3">
-                  <div 
-                    className="bg-blue-600 h-2 rounded-full" 
-                    style={{ width: `${analysisResults?.hydration?.score ?? 0}%` }}
+                  <div
+                    className="bg-blue-600 h-2 rounded-full"
+                    style={{
+                      width: `${analysisResults?.hydration?.score ?? 0}%`,
+                    }}
                   ></div>
                 </div>
-                <span className="text-sm font-medium">{analysisResults?.hydration?.score ?? 0}%</span>
+                <span className="text-sm font-medium">
+                  {analysisResults?.hydration?.score ?? 0}%
+                </span>
               </div>
-              <p className="text-sm text-gray-600">{analysisResults?.hydration?.description ?? ''}</p>
+              <p className="text-sm text-gray-600">
+                {analysisResults?.hydration?.description ?? ""}
+              </p>
             </div>
 
             {/* Texture */}
@@ -333,14 +377,20 @@ const SkinDiagnosticTool = () => {
               </div>
               <div className="flex items-center mb-2">
                 <div className="flex-1 bg-gray-200 rounded-full h-2 mr-3">
-                  <div 
-                    className="bg-green-600 h-2 rounded-full" 
-                    style={{ width: `${analysisResults?.texture?.score ?? 0}%` }}
+                  <div
+                    className="bg-green-600 h-2 rounded-full"
+                    style={{
+                      width: `${analysisResults?.texture?.score ?? 0}%`,
+                    }}
                   ></div>
                 </div>
-                <span className="text-sm font-medium">{analysisResults?.texture?.score ?? 0}%</span>
+                <span className="text-sm font-medium">
+                  {analysisResults?.texture?.score ?? 0}%
+                </span>
               </div>
-              <p className="text-sm text-gray-600">{analysisResults?.texture?.description ?? ''}</p>
+              <p className="text-sm text-gray-600">
+                {analysisResults?.texture?.description ?? ""}
+              </p>
             </div>
 
             {/* Pigmentation */}
@@ -351,14 +401,20 @@ const SkinDiagnosticTool = () => {
               </div>
               <div className="flex items-center mb-2">
                 <div className="flex-1 bg-gray-200 rounded-full h-2 mr-3">
-                  <div 
-                    className="bg-purple-600 h-2 rounded-full" 
-                    style={{ width: `${analysisResults?.pigmentation?.score ?? 0}%` }}
+                  <div
+                    className="bg-purple-600 h-2 rounded-full"
+                    style={{
+                      width: `${analysisResults?.pigmentation?.score ?? 0}%`,
+                    }}
                   ></div>
                 </div>
-                <span className="text-sm font-medium">{analysisResults?.pigmentation?.score ?? 0}%</span>
+                <span className="text-sm font-medium">
+                  {analysisResults?.pigmentation?.score ?? 0}%
+                </span>
               </div>
-              <p className="text-sm text-gray-600">{analysisResults?.pigmentation?.description ?? ''}</p>
+              <p className="text-sm text-gray-600">
+                {analysisResults?.pigmentation?.description ?? ""}
+              </p>
             </div>
 
             {/* Sun Damage */}
@@ -369,22 +425,30 @@ const SkinDiagnosticTool = () => {
               </div>
               <div className="flex items-center mb-2">
                 <div className="flex-1 bg-gray-200 rounded-full h-2 mr-3">
-                  <div 
-                    className="bg-orange-600 h-2 rounded-full" 
-                    style={{ width: `${analysisResults?.sunDamage?.score ?? 0}%` }}
+                  <div
+                    className="bg-orange-600 h-2 rounded-full"
+                    style={{
+                      width: `${analysisResults?.sunDamage?.score ?? 0}%`,
+                    }}
                   ></div>
                 </div>
-                <span className="text-sm font-medium">{analysisResults?.sunDamage?.score ?? 0}%</span>
+                <span className="text-sm font-medium">
+                  {analysisResults?.sunDamage?.score ?? 0}%
+                </span>
               </div>
-              <p className="text-sm text-gray-600">{analysisResults?.sunDamage?.description ?? ''}</p>
+              <p className="text-sm text-gray-600">
+                {analysisResults?.sunDamage?.description ?? ""}
+              </p>
             </div>
           </div>
         </div>
 
         {/* Personalized Regimen */}
         <div className="bg-white rounded-2xl shadow-lg p-6">
-          <h2 className="text-2xl font-bold text-gray-800 mb-6">Your Personalized Skincare Regimen</h2>
-          
+          <h2 className="text-2xl font-bold text-gray-800 mb-6">
+            Your Personalized Skincare Regimen
+          </h2>
+
           <div className="grid md:grid-cols-2 gap-6">
             {/* Morning Routine */}
             <div className="bg-yellow-50 rounded-lg p-4">
@@ -396,10 +460,16 @@ const SkinDiagnosticTool = () => {
                 {regimen.morning.map((product, index) => (
                   <div key={index} className="bg-white rounded-lg p-3 border">
                     <div className="flex justify-between items-start mb-2">
-                      <h4 className="font-medium text-gray-800">{product.name}</h4>
-                      <span className="text-green-600 font-semibold">{product.price}</span>
+                      <h4 className="font-medium text-gray-800">
+                        {product.name}
+                      </h4>
+                      <span className="text-green-600 font-semibold">
+                        {product.price}
+                      </span>
                     </div>
-                    <p className="text-sm text-gray-500 mb-1">{product.brand}</p>
+                    <p className="text-sm text-gray-500 mb-1">
+                      {product.brand}
+                    </p>
                     <p className="text-sm text-gray-600">{product.why}</p>
                   </div>
                 ))}
@@ -416,10 +486,16 @@ const SkinDiagnosticTool = () => {
                 {regimen.evening.map((product, index) => (
                   <div key={index} className="bg-white rounded-lg p-3 border">
                     <div className="flex justify-between items-start mb-2">
-                      <h4 className="font-medium text-gray-800">{product.name}</h4>
-                      <span className="text-green-600 font-semibold">{product.price}</span>
+                      <h4 className="font-medium text-gray-800">
+                        {product.name}
+                      </h4>
+                      <span className="text-green-600 font-semibold">
+                        {product.price}
+                      </span>
                     </div>
-                    <p className="text-sm text-gray-500 mb-1">{product.brand}</p>
+                    <p className="text-sm text-gray-500 mb-1">
+                      {product.brand}
+                    </p>
                     <p className="text-sm text-gray-600">{product.why}</p>
                   </div>
                 ))}
@@ -429,19 +505,40 @@ const SkinDiagnosticTool = () => {
 
           <div className="mt-6 p-4 bg-green-50 rounded-lg">
             <div className="flex items-center justify-between">
-              <span className="font-semibold text-gray-800">Estimated Monthly Cost:</span>
-              <span className="text-xl font-bold text-green-600">{regimen.totalCost}</span>
+              <span className="font-semibold text-gray-800">
+                Estimated Monthly Cost:
+              </span>
+              <span className="text-xl font-bold text-green-600">
+                {regimen.totalCost}
+              </span>
             </div>
             <p className="text-sm text-gray-600 mt-2">
-              Based on your budget preference and local market prices in Nigeria.
+              Based on your budget preference and local market prices in
+              Nigeria.
             </p>
           </div>
 
           <div className="mt-6 flex flex-wrap gap-4">
-            <button className="flex-1 bg-blue-600 text-white py-3 px-6 rounded-lg hover:bg-blue-700 font-medium">
+            <button
+              onClick={() => {
+                // Collect product names and brands from regimen
+                const allProducts = [...regimen.morning, ...regimen.evening];
+                const names = Array.from(
+                  new Set(allProducts.map((p) => p.name))
+                ).join(",");
+                const brands = Array.from(
+                  new Set(allProducts.map((p) => p.brand))
+                ).join(",");
+                // Redirect with query params for name and brand
+                window.location.href = `/products?names=${encodeURIComponent(
+                  names
+                )}&brands=${encodeURIComponent(brands)}`;
+              }}
+              className="flex-1 border-cocoa/80 border-2 text-cocoa/80 py-3 px-6 rounded-lg hover:bg-cocoa font-medium transition-all hover:text-white"
+            >
               Shop Recommended Products
             </button>
-            <button className="flex-1 bg-green-600 text-white py-3 px-6 rounded-lg hover:bg-green-700 font-medium">
+            <button className="flex-1 bg-cocoa/80 text-white py-3 px-6 rounded-lg hover:bg-cocoa font-medium">
               Book Expert Consultation
             </button>
           </div>
@@ -451,11 +548,12 @@ const SkinDiagnosticTool = () => {
   };
 
   return (
-    <div className="min-h-screen bg-gradient-to-br from-blue-50 via-white to-purple-50 py-8 px-4">
+    <div className="min-h-screen bg-gradient-to-br from-[#a67b50a1] via-white to-purple-50 py-8 px-4">
+      {/*  background: "linear-gradient(135deg, #D1A27A 0%, #B98560 50%, #6B3F33 100%)" */}
       <div className="max-w-6xl mx-auto">
         {/* Header */}
         <div className="text-center mb-8">
-          <h1 className="text-4xl font-bold text-gray-800 mb-2">
+          <h1 className="text-4xl font-bold text-amber-800 mb-2">
             Skyne AI Skin Diagnostic
           </h1>
           <p className="text-gray-600 text-lg">
@@ -464,8 +562,14 @@ const SkinDiagnosticTool = () => {
         </div>
 
         {/* Content */}
-        {!showResults && !isAnalyzing && currentStep < quizQuestions.length && renderQuizStep()}
-        {!showResults && !isAnalyzing && currentStep === quizQuestions.length && renderSelfieUpload()}
+        {!showResults &&
+          !isAnalyzing &&
+          currentStep < quizQuestions.length &&
+          renderQuizStep()}
+        {!showResults &&
+          !isAnalyzing &&
+          currentStep === quizQuestions.length &&
+          renderSelfieUpload()}
         {isAnalyzing && renderAnalyzing()}
         {showResults && renderResults()}
       </div>

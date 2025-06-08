@@ -1,4 +1,4 @@
-"use";
+"use client";
 
 import React, { useState, useEffect, useRef } from "react";
 import { renderVideoCall } from "@/app/components/consult/VideoCall";
@@ -88,6 +88,8 @@ const ConsultationBookingSystem = () => {
   const [chatMessages, setChatMessages] = useState<ChatMessage[]>([]);
   const [newMessage, setNewMessage] = useState<string>("");
   const [isVideoCall, setIsVideoCall] = useState(false);
+  const [showSendDataPrompt, setShowSendDataPrompt] = useState(false);
+  const [userRegimen, setUserRegimen] = useState<any>(null); // Replace 'any' with your regimen type
   const chatEndRef = useRef<HTMLDivElement | null>(null);
 
   // Generate available time slots
@@ -190,6 +192,15 @@ const ConsultationBookingSystem = () => {
   const handleBooking = () => {
     // Simulate booking process
     setCurrentStep("confirmation");
+    setShowSendDataPrompt(true); // Show prompt after booking
+  };
+
+  // Simulate sending regimen/results to expert
+  const sendRegimenToExpert = () => {
+    // Replace with actual API call if needed
+    // Example: await api.sendRegimenToExpert(selectedExpert.id, userRegimen)
+    setShowSendDataPrompt(false);
+    alert("Your regimen/results have been sent to the doctor.");
   };
 
   // Chat functionality
@@ -243,7 +254,7 @@ const ConsultationBookingSystem = () => {
         id: expert.id,
         expert,
         image: expert.image,
-        name: expert.name
+        name: expert.name,
       });
     } else {
       setActiveChat(null);
@@ -304,6 +315,32 @@ const ConsultationBookingSystem = () => {
           setSelectedExtras,
           setSelectedTime,
         })}
+      {/* Prompt to send regimen/results to doctor */}
+      {showSendDataPrompt && (
+        <div className="fixed inset-0 flex items-center justify-center bg-black bg-opacity-40 z-50">
+          <div className="bg-white p-6 rounded shadow-lg max-w-sm w-full">
+            <h2 className="text-lg font-semibold mb-4">Send Your Results?</h2>
+            <p className="mb-4">
+              Would you like to send your personalized skincare regimen/results
+              to the doctor for a more tailored consultation?
+            </p>
+            <div className="flex justify-end gap-2">
+              <button
+                className="px-4 py-2 rounded bg-gray-200"
+                onClick={() => setShowSendDataPrompt(false)}
+              >
+                No
+              </button>
+              <button
+                className="px-4 py-2 rounded bg-blue-600 text-white"
+                onClick={sendRegimenToExpert}
+              >
+                Yes, Send
+              </button>
+            </div>
+          </div>
+        </div>
+      )}
     </div>
   );
 };

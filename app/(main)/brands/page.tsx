@@ -1,3 +1,5 @@
+'use client'
+
 import { mockBrands } from "@/app/components/brands/array";
 import BrandsList from "@/app/components/brands/BrandsList";
 import React, { useState, useEffect } from "react";
