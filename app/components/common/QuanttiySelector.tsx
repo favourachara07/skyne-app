@@ -1,7 +1,15 @@
 import React from 'react';
 import { Plus, Minus } from 'lucide-react';
 
-const QuantitySelector = ({ quantity, setQuantity, min = 1, max = 99, className = '' }) => {
+interface QuantitySelectorProps {
+  quantity: number;
+  setQuantity: (value: number) => void;
+  min?: number;
+  max?: number;
+  className?: string;
+}
+
+const QuantitySelector: React.FC<QuantitySelectorProps> = ({ quantity, setQuantity, min = 1, max = 99, className = '' }) => {
   const handleDecrease = () => {
     if (quantity > min) {
       setQuantity(quantity - 1);
@@ -14,7 +22,7 @@ const QuantitySelector = ({ quantity, setQuantity, min = 1, max = 99, className 
     }
   };
 
-  const handleChange = (e) => {
+  const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     const value = parseInt(e.target.value);
     if (!isNaN(value)) {
       if (value < min) {
