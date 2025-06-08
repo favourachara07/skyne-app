@@ -25,7 +25,7 @@ const Brands = () => {
           setBrands(mockBrands);
           setLoading(false);
         }, 500);
-      } catch (err) {
+      } catch {
         setError("Failed to load brands. Please try again later.");
         setLoading(false);
       }

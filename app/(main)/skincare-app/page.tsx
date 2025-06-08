@@ -5,6 +5,14 @@ import { Sun, Moon, Droplets, Shield, Sparkles, Camera, RefreshCw, MapPin } from
 import { PRODUCT_DATABASE } from '@/app/components/african-skin/data';
 
 // Skincare Quiz Component
+interface Product {
+  name?: string;
+  brand?: string;
+  skinTypes?: string[];
+  climate?: string;
+  melaninFriendly?: boolean;
+  type?: string;
+}
 type SkinType = 'dry' | 'oily' | 'combination' | 'sensitive';
 type Concern =
   | 'hyperpigmentation'
@@ -204,7 +212,7 @@ function AIScanComponent({ onScanComplete }: AIScanComponentProps) {
 // Product Recommendation Logic
 interface RoutineStep {
   step: string;
-  product: any;
+  product: Product;
   order: number;
 }
 interface Routine {
@@ -262,7 +270,7 @@ function generateRecommendations(userProfile: SkincareQuizAnswers, season = 'def
     // Add extra hydration for dry season
     routine.PM.push({ 
       step: 'extra-moisture', 
-      product: PRODUCT_DATABASE.moisturizers.find(p => p.type === 'rich'),
+      product: PRODUCT_DATABASE.moisturizers.find(p => p.type === 'rich') || PRODUCT_DATABASE.moisturizers[0],
       order: 4 
     });
   }
@@ -278,7 +286,7 @@ function generateRecommendations(userProfile: SkincareQuizAnswers, season = 'def
 // Routine Display Component
 interface RoutineStep {
   step: string;
-  product: any;
+  product: Product;
   order: number;
 }
 interface RoutineDisplayProps {
@@ -363,7 +371,7 @@ function SeasonalRefresh({ onRefresh }: { onRefresh: (season: string) => void })
 export default function SkincareApp() {
   const [step, setStep] = useState('quiz');
   const [userProfile, setUserProfile] = useState<SkincareQuizAnswers | null>(null);
-  interface RoutineStep { step: string; product: any; order: number };
+  interface RoutineStep { step: string; product: Product; order: number };
   interface Routine  { AM: RoutineStep[]; PM: RoutineStep[] };
   const [routine, setRoutine] = useState<Routine | null>(null);
   const [aiScanResults, setAiScanResults] = useState<{

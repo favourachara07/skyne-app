@@ -10,7 +10,7 @@ const Products = () => {
   const [filterBrand, setFilterBrand] = useState('');
   const [filterMinPrice, setFilterMinPrice] = useState('');
   const [filterMaxPrice, setFilterMaxPrice] = useState('');
-  const [loading, setLoading] = useState(false);
+  const [loading] = useState(false);
 
   const allBrands = ['CeraVe', 'The Ordinary', 'Neutrogena', 'Olay', 'Nivea'];
   const brandId = 'Premium Skincare';
@@ -118,7 +118,12 @@ const Products = () => {
             </div>
           </div>
         ) : filteredProducts.length > 0 ? (
-          <ProductsList products={filteredProducts} />
+          <ProductsList
+            products={filteredProducts.map(product => ({
+              ...product,
+              price: typeof product.price === 'string' ? parseFloat(product.price) : product.price
+            }))}
+          />
         ) : (
           <div className="text-center py-20">
             <div className="max-w-md mx-auto">

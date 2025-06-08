@@ -1,6 +1,5 @@
 "use client";
 
-import Image from "next/image";
 import Link from "next/link";
 import { ServiceCard } from "./components/common/ServiceCard";
 import anim1 from "./components/animations/facial3.json";
@@ -34,10 +33,10 @@ const Home = () => {
     // Navigate to curated marketplace
   };
 
-  const handleBookConsultation = () => {
-    console.log("Book consultation");
-    // Navigate to expert booking
-  };
+  // const handleBookConsultation = () => {
+  //   console.log("Book consultation");
+  //   // Navigate to expert booking
+  // };
 
   return (
     <div className='mt-10'>

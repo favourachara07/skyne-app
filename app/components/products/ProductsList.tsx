@@ -1,8 +1,17 @@
 import React from "react";
 import Image from "next/image";
-import { Product } from "@/app/(main)/products/page";
+import  Product  from "@/app/(main)/products/page";
 import { Star } from "lucide-react";
 
+
+interface Product {
+  id: number | string;
+  name: string;
+  brand: string;
+  image?: string;
+  description?: string;
+  price?: number;
+}
 
 interface ProductsListProps {
   products: Product[];

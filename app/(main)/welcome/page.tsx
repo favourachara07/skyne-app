@@ -25,8 +25,9 @@ interface AnalysisResults {
 
 const SkinDiagnosticTool = () => {
   const [currentStep, setCurrentStep] = useState(0);
-  const [quizAnswers, setQuizAnswers] = useState<Record<string, any>>({});
-  const [selfieFile, setSelfieFile] = useState<File | null>(null);
+  // Define a type for quiz answers: string for single, string[] for multiple
+  type QuizAnswerValue = string | string[];
+  const [quizAnswers, setQuizAnswers] = useState<Record<string, QuizAnswerValue>>({});
   const [selfiePreview, setSelfiePreview] = useState<string | null>(null);
   const [analysisResults, setAnalysisResults] =
     useState<AnalysisResults | null>(null);
@@ -34,7 +35,8 @@ const SkinDiagnosticTool = () => {
   const [showResults, setShowResults] = useState(false);
   const fileInputRef = useRef<HTMLInputElement | null>(null);
 
-  const handleQuizAnswer = (questionId: string, answer: any) => {
+  // Specify type for answer parameter
+  const handleQuizAnswer = (questionId: string, answer: QuizAnswerValue) => {
     setQuizAnswers((prev) => ({
       ...prev,
       [questionId]: answer,
@@ -44,7 +46,6 @@ const SkinDiagnosticTool = () => {
   const handleSelfieUpload = (event: React.ChangeEvent<HTMLInputElement>) => {
     const file = event.target.files && event.target.files[0];
     if (file) {
-      setSelfieFile(file);
       const reader = new FileReader();
       reader.onload = (e) => {
         if (e.target) {
@@ -176,7 +177,7 @@ const SkinDiagnosticTool = () => {
               key={option.value}
               onClick={() => {
                 if (question.multiple) {
-                  const current = currentAnswer || [];
+                  const current = Array.isArray(currentAnswer) ? currentAnswer : [];
                   const updated = current.includes(option.value)
                     ? current.filter((v: string) => v !== option.value)
                     : [...current, option.value];
@@ -265,7 +266,6 @@ const SkinDiagnosticTool = () => {
               <button
                 onClick={() => {
                   setSelfiePreview(null);
-                  setSelfieFile(null);
                 }}
                 className="px-4 py-2 bg-gray-100 text-gray-600 rounded-lg hover:bg-gray-200"
               >
