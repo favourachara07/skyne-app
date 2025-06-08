@@ -1,7 +1,18 @@
 import React from 'react';
 import Button from '../common/Button';
 
-const CartSummary = ({ cartItems, showCheckoutButton = true }) => {
+interface CartItem  {
+  price: number;
+  quantity: number;
+  // Add other properties if needed (e.g., id, name)
+};
+
+interface CartSummaryProps {
+  cartItems: CartItem[];
+  showCheckoutButton?: boolean;
+}
+
+const CartSummary: React.FC<CartSummaryProps> = ({ cartItems, showCheckoutButton = true }) => {
   // Calculate subtotal
   const subtotal = cartItems.reduce((total, item) => {
     return total + (item.price * item.quantity);
