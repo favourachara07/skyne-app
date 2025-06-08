@@ -10,7 +10,7 @@ const Home = () => {
   const router = useRouter();
 
   const handleAnalysisClick = () => {
-    router.push("/welcome");
+    // router.push("/welcome");
   };
 
   const handleConsultationClick = () => {
@@ -49,11 +49,11 @@ const Home = () => {
             animationData={anim1} 
             loop 
             autoplay 
-            className="w-full max-w-lg drop-shadow-2xl" 
+            className="w-full md:block max-w-lg hidden drop-shadow-2xl" 
           />
         </div>
     
-        <div className="flex-1 text-center md:text-left flex flex-col items-center md:items-start px-6 md:px-12">
+        <div className="md:flex-1 text-center md:text-left flex flex-col items-center md:items-start px-6 md:px-12">
           <h1 className="text-5xl md:text-7xl font-black text-amber-900 mb-6 leading-tight tracking-tight">
             Your Skin,
             <br />
@@ -67,9 +67,10 @@ const Home = () => {
           </p>
           
           <div className="flex flex-col sm:flex-row gap-4 w-full max-w-md">
+            {/* flex-1 bg-gradient-to-r from-amber-700 to-amber-900 text-white px-8 py-4 rounded-2xl shadow-2xl hover:scale-105  hover:shadow-amber-500/25 transition-all duration-300 font-bold text-lg */}
             <Link
               href="/welcome"
-              className="flex-1 bg-gradient-to-r from-amber-700 to-amber-900 text-white px-8 py-4 rounded-2xl shadow-2xl hover:scale-105 hover:shadow-amber-500/25 transition-all duration-300 font-bold text-lg"
+              className="flex-1 bg-caramel/80 backdrop-blur-sm text-white border-2 border-amber-200 px-8 py-4 rounded-2xl shadow-xl hover:bg-caramel hover:scale-105 transition-all duration-300 font-semibold text-lg text-center"
             >
               Start 60s Analysis
             </Link>

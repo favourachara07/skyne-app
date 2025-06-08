@@ -35,8 +35,8 @@ const Navbar = () => {
     { href: "/", label: "Home", mobileOnly: false },
     { href: "/brands", label: "Brands", mobileOnly: false },
     { href: "/products", label: "Products", mobileOnly: false },
-    { href: "/analysis", label: "Skin Analysis", mobileOnly: false },
-    { href: "/consultation", label: "Consultation", mobileOnly: false },
+    { href: "/welcome", label: "Skin Analysis", mobileOnly: false },
+    { href: "/consult", label: "Consultation", mobileOnly: false },
     { href: "/about", label: "About", mobileOnly: false },
   ];
 
@@ -116,7 +116,7 @@ const Navbar = () => {
                 )}
               </Link>
               <Link
-                href="/analysis"
+                href="/welcome"
                 className="bg-gradient-to-r from-amber-700 to-amber-800 text-white px-6 py-2 rounded-full font-semibold hover:from-amber-800 hover:to-amber-900 transition-all duration-200 shadow-lg hover:shadow-xl"
               >
                 Free Analysis
