@@ -89,10 +89,10 @@ const ConsultationBookingSystem = () => {
   const [newMessage, setNewMessage] = useState<string>("");
   const [isVideoCall, setIsVideoCall] = useState(false);
   const [showSendDataPrompt, setShowSendDataPrompt] = useState(false);
-  const [userRegimen, setUserRegimen] = useState<any>(null); // Replace 'any' with your regimen type
   const chatEndRef = useRef<HTMLDivElement | null>(null);
 
   // Generate available time slots
+  // eslint-disable-next-line react-hooks/exhaustive-deps
   const generateTimeSlots = () => {
     const slots = [];
     const startHour = 9;
@@ -151,6 +151,7 @@ const ConsultationBookingSystem = () => {
     if (selectedDate && selectedExpert) {
       setAvailableSlots(generateTimeSlots());
     }
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [selectedDate, selectedExpert, consultationType]);
 
   const handleExpertSelect = (expert: Expert) => {
