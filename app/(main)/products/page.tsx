@@ -1,99 +1,30 @@
-"use client";
+'use client'
 
 import { mockProducts } from "@/app/components/products/array";
 import ProductsList from "@/app/components/products/ProductsList";
 import { Filter, Search, ShoppingBag } from "lucide-react";
-import { useParams, useSearchParams } from "next/navigation";
-import React, { useState, useEffect } from "react";
-
-export interface Product {
-  id: number;
-  name: string;
-  brand: string;
-  price: string;
-  description: string;
-  image: string;
-}
+import { useState } from "react";
 
 const Products = () => {
-  const { brandId } = useParams();
-  const searchParams = useSearchParams();
-  const [products, setProducts] = useState<Product[]>([]);
-  const [loading, setLoading] = useState(true);
+  const [filterName, setFilterName] = useState('');
+  const [filterBrand, setFilterBrand] = useState('');
+  const [filterMinPrice, setFilterMinPrice] = useState('');
+  const [filterMaxPrice, setFilterMaxPrice] = useState('');
+  const [loading, setLoading] = useState(false);
 
-  // Filter states
-  const [filterName, setFilterName] = useState("");
-  const [filterBrand, setFilterBrand] = useState("");
-  const [filterMinPrice, setFilterMinPrice] = useState("");
-  const [filterMaxPrice, setFilterMaxPrice] = useState("");
+  const allBrands = ['CeraVe', 'The Ordinary', 'Neutrogena', 'Olay', 'Nivea'];
+  const brandId = 'Premium Skincare';
 
-  // Get all brands for dropdown
-  const allBrands = Array.from(new Set(mockProducts.map((p) => p.brand)));
-
-  useEffect(() => {
-    setLoading(true);
-    setTimeout(() => {
-      const recommended = searchParams?.get("recommended");
-      const namesParam = searchParams?.get("names");
-      const brandsParam = searchParams?.get("brands");
-      let filtered = mockProducts;
-
-      if (brandId) {
-        filtered = filtered.filter(
-          (product) =>
-            product.brand.toLowerCase() === String(brandId).toLowerCase()
-        );
-      }
-
-      if (recommended) {
-        const ids = recommended.split(",").map((id) => Number(id));
-        filtered = filtered.filter((product) => ids.includes(product.id));
-      }
-
-      // Filter by names from welcome page
-      if (namesParam) {
-        const namesArr = namesParam
-          .split(",")
-          .map((n) => n.trim().toLowerCase());
-        filtered = filtered.filter((product) =>
-          namesArr.some((name) => product.name.toLowerCase().includes(name))
-        );
-      }
-
-      // Filter by brands from welcome page
-      if (brandsParam) {
-        const brandsArr = brandsParam
-          .split(",")
-          .map((b) => b.trim().toLowerCase());
-        filtered = filtered.filter((product) =>
-          brandsArr.includes(product.brand.toLowerCase())
-        );
-      }
-
-      setProducts(filtered);
-      setLoading(false);
-    }, 500);
-  }, [brandId, searchParams]);
-
-  // Apply filters
-  const filteredProducts = products.filter((product) => {
-    // Name filter (case-insensitive, partial match)
-    const nameMatch = filterName
-      ? product.name.toLowerCase().includes(filterName.toLowerCase())
-      : true;
-    // Brand filter
-    const brandMatch = filterBrand
-      ? product.brand.toLowerCase() === filterBrand.toLowerCase()
-      : true;
-    // Price filter (assume price is a string, convert to number)
-    const price = parseFloat(product.price.replace(/[^0-9.]/g, ""));
-    const minMatch = filterMinPrice ? price >= Number(filterMinPrice) : true;
-    const maxMatch = filterMaxPrice ? price <= Number(filterMaxPrice) : true;
-    return nameMatch && brandMatch && minMatch && maxMatch;
+  const filteredProducts = mockProducts.filter(product => {
+    const matchesName = product.name.toLowerCase().includes(filterName.toLowerCase());
+    const matchesBrand = !filterBrand || product.brand === filterBrand;
+    const matchesMinPrice = !filterMinPrice || Number(product.price) >= parseFloat(filterMinPrice);
+    const matchesMaxPrice = !filterMaxPrice || Number(product.price) <= parseFloat(filterMaxPrice);
+    return matchesName && matchesBrand && matchesMinPrice && matchesMaxPrice;
   });
 
   return (
- <div className="min-h-screen bg-gradient-to-br from-amber-50 to-orange-50">
+    <div className="min-h-screen bg-gradient-to-br from-amber-50 to-orange-50">
       {/* Header Section */}
       <div className="bg-gradient-to-r from-amber-800 to-amber-900 text-white py-12 px-4">
         <div className="max-w-7xl mx-auto">

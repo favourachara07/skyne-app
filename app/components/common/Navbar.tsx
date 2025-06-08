@@ -193,7 +193,7 @@ const Navbar = () => {
           </Link>
           
           <Link
-            href="/analysis"
+            href="/welcome"
             className="flex flex-col items-center py-2 px-3 rounded-xl bg-gradient-to-r from-amber-700 to-amber-800 text-white shadow-lg"
           >
             <div className="w-8 h-8 bg-white/20 rounded-full flex items-center justify-center mb-1">
