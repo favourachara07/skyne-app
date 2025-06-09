@@ -73,7 +73,7 @@ interface AnimatedSectionProps {
   children: React.ReactNode;
   variants?: any;
   className?: string;
-}
+};
 
 const AnimatedSection = ({
   children,
@@ -515,28 +515,15 @@ const Home = () => {
             className="flex flex-col sm:flex-row gap-4 justify-center max-w-md mx-auto"
             variants={fadeInUp}
           >
-            {isAuthenticated ? (
-              <motion.button
-                onClick={handleStartAnalysis}
-                className="bg-white text-amber-800 px-8 py-4 rounded-2xl shadow-2xl hover:scale-105 hover:bg-amber-50 transition-all duration-300 font-bold text-lg"
-                whileHover={{ scale: 1.05 }}
-                whileTap={{ scale: 0.95 }}
-                transition={{ type: "spring", stiffness: 400, damping: 17 }}
-              >
-                Start Free Analysis
-              </motion.button>
-            ) : (
-              <motion.a
-              href='/auth'
-                onClick={handleStartAnalysis}
-                className="bg-white text-amber-800 px-8 py-4 rounded-2xl shadow-2xl hover:scale-105 hover:bg-amber-50 transition-all duration-300 font-bold text-lg"
-                whileHover={{ scale: 1.05 }}
-                whileTap={{ scale: 0.95 }}
-                transition={{ type: "spring", stiffness: 400, damping: 17 }}
-              >
-                Sign Up
-              </motion.a>
-            )}
+            <motion.button
+              onClick={handleStartAnalysis}
+              className="bg-white text-amber-800 px-8 py-4 rounded-2xl shadow-2xl hover:scale-105 hover:bg-amber-50 transition-all duration-300 font-bold text-lg"
+              whileHover={{ scale: 1.05 }}
+              whileTap={{ scale: 0.95 }}
+              transition={{ type: "spring", stiffness: 400, damping: 17 }}
+            >
+              Start Free Analysis
+            </motion.button>
             <motion.button
               onClick={handleExploreProducts}
               className="bg-transparent border-2 border-white text-white px-8 py-4 rounded-2xl hover:bg-white hover:text-amber-800 transition-all duration-300 font-semibold text-lg"

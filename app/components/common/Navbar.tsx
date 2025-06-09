@@ -1,13 +1,16 @@
 "use client";
 
 import React, { useState, useEffect } from "react";
-import { Home, ShoppingBag, User, MessageCircle, Search, Menu, X } from "lucide-react";
+import { Home, ShoppingBag, User, Search, Menu, X, Users } from "lucide-react";
 import { usePathname } from "next/navigation";
 import Link from "next/link";
 import Image from "next/image";
+import { signOut, useSession } from "next-auth/react";
 
 const Navbar = () => {
   const pathname = usePathname();
+  const { data: session, status } = useSession();
+  const isAuthenticated = !!session;
   const [isScrolled, setIsScrolled] = useState(false);
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
   const [cartCount] = useState(0);
@@ -35,8 +38,13 @@ const Navbar = () => {
     { href: "/", label: "Home", mobileOnly: false },
     { href: "/brands", label: "Brands", mobileOnly: false },
     { href: "/products", label: "Products", mobileOnly: false },
-    { href: "/welcome", label: "Skin Analysis", mobileOnly: false },
-    { href: "/consult", label: "Consultation", mobileOnly: false },
+    // Hide these if not authenticated
+    ...(isAuthenticated
+      ? [
+          { href: "/welcome", label: "Skin Analysis", mobileOnly: false },
+          { href: "/consult", label: "Consultation", mobileOnly: false },
+        ]
+      : []),
     { href: "/about", label: "About", mobileOnly: false },
   ];
 
@@ -54,17 +62,17 @@ const Navbar = () => {
           <div className="flex items-center justify-between h-16 lg:h-20">
             {/* Logo */}
             <div className="flex items-center">
-              <Link
-                href="/"
-                className="flex items-center space-x-2 group"
-              >
+              <Link href="/" className="flex items-center space-x-2 group">
                 <div className="relative">
                   <Image
+                    src="/skyne.webp"
+                    alt="Skyne Logo"
                     width={60}
                     height={60}
-                    src="/skyne.svg"
+                    priority
+                    sizes="(max-width: 1024px) 48px, 64px"
                     className="h-12 w-12 lg:h-16 lg:w-16 transition-transform group-hover:scale-105"
-                    alt="Skyne Logo"
+                    style={{ width: "auto", height: "auto" }} // Prevents stretching
                   />
                 </div>
                 <span className="text-xl lg:text-2xl font-bold text-amber-800 hidden sm:block">
@@ -75,7 +83,16 @@ const Navbar = () => {
 
             {/* Desktop Navigation Links */}
             <div className="hidden lg:flex items-center space-x-8">
-              {navigationLinks.slice(1, 6).map((link) => (
+              {/* logout */}
+              {/* {isAuthenticated && (
+                <button
+                  onClick={() => signOut()}
+                  className="absolute top-4 right-4 bg-amber-700 text-white px-4 py-2 rounded-lg shadow hover:bg-amber-800 transition"
+                >
+                  Logout
+                </button>
+              )} */}
+              {navigationLinks.slice(1, navigationLinks.length).map((link) => (
                 <Link
                   key={link.href}
                   href={link.href}
@@ -115,12 +132,15 @@ const Navbar = () => {
                   </span>
                 )}
               </Link>
-              <Link
-                href="/welcome"
-                className="bg-gradient-to-r from-amber-700 to-amber-800 text-white px-6 py-2 rounded-full font-semibold hover:from-amber-800 hover:to-amber-900 transition-all duration-200 shadow-lg hover:shadow-xl"
-              >
-                Free Analysis
-              </Link>
+              {/* Hide Free Analysis button if not authenticated */}
+              {isAuthenticated && (
+                <Link
+                  href="/welcome"
+                  className="bg-gradient-to-r from-amber-700 to-amber-800 text-white px-6 py-2 rounded-full font-semibold hover:from-amber-800 hover:to-amber-900 transition-all duration-200 shadow-lg hover:shadow-xl"
+                >
+                  Free Analysis
+                </Link>
+              )}
             </div>
 
             {/* Mobile Menu Button */}
@@ -179,43 +199,42 @@ const Navbar = () => {
             <Home size={20} />
             <span className="text-xs mt-1 font-medium">Home</span>
           </Link>
-          
+
           <Link
-            href="/products"
+            href="/order"
             className={`flex flex-col items-center py-2 px-3 rounded-xl transition-all duration-200 ${
-              isActive("/products")
+              isActive("/order")
                 ? "text-amber-800 bg-amber-50"
                 : "text-gray-600 hover:text-amber-800 hover:bg-amber-50"
             }`}
           >
             <ShoppingBag size={20} />
-            <span className="text-xs mt-1 font-medium">Shop</span>
+            <span className="text-xs mt-1 font-medium">Order</span>
           </Link>
-          
+
           <Link
             href="/welcome"
             className="flex flex-col items-center py-2 px-3 rounded-xl bg-gradient-to-r from-amber-700 to-amber-800 text-white shadow-lg"
           >
             <div className="w-8 h-8 bg-white/20 rounded-full flex items-center justify-center mb-1">
               <svg className="w-4 h-4" fill="currentColor" viewBox="0 0 24 24">
-                <path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-2 15l-5-5 1.41-1.41L10 14.17l7.59-7.59L19 8l-9 9z"/>
+                <path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-2 15l-5-5 1.41-1.41L10 14.17l7.59-7.59L19 8l-9 9z" />
               </svg>
             </div>
             <span className="text-xs font-semibold">Analyze</span>
           </Link>
-          
           <Link
-            href="/chat"
+            href="/community"
             className={`flex flex-col items-center py-2 px-3 rounded-xl transition-all duration-200 ${
-              isActive("/chat")
+              isActive("/community")
                 ? "text-amber-800 bg-amber-50"
                 : "text-gray-600 hover:text-amber-800 hover:bg-amber-50"
             }`}
           >
-            <MessageCircle size={20} />
-            <span className="text-xs mt-1 font-medium">Chat</span>
+            <Users size={20} />
+            <span className="text-xs mt-1 font-medium">Community</span>
           </Link>
-          
+
           <Link
             href="/account"
             className={`flex flex-col items-center py-2 px-3 rounded-xl transition-all duration-200 relative ${
@@ -231,9 +250,9 @@ const Navbar = () => {
       </nav>
 
       {/* Spacer for fixed navbar */}
-      <div className="h-16 lg:h-20"></div>
+      <div className="h-8 lg:h-20"></div>
       {/* Spacer for mobile bottom nav */}
-      <div className="h-16 lg:h-0"></div>
+      <div className="h-8 lg:h-0"></div>
     </>
   );
 };

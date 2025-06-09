@@ -1,4 +1,3 @@
-
 const Footer = () => (
   <footer className="w-full  text-amber-800 py-6 text-center mt-auto">
     <div className="max-w-7xl mx-auto px-4 flex flex-col md:flex-row items-center justify-between gap-2">

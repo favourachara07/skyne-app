@@ -1,4 +1,4 @@
-'use client'
+"use client";
 
 import { mockProducts } from "@/app/components/products/array";
 import ProductsList from "@/app/components/products/ProductsList";
@@ -6,20 +6,24 @@ import { Filter, Search, ShoppingBag } from "lucide-react";
 import { useState } from "react";
 
 const Products = () => {
-  const [filterName, setFilterName] = useState('');
-  const [filterBrand, setFilterBrand] = useState('');
-  const [filterMinPrice, setFilterMinPrice] = useState('');
-  const [filterMaxPrice, setFilterMaxPrice] = useState('');
+  const [filterName, setFilterName] = useState("");
+  const [filterBrand, setFilterBrand] = useState("");
+  const [filterMinPrice, setFilterMinPrice] = useState("");
+  const [filterMaxPrice, setFilterMaxPrice] = useState("");
   const [loading] = useState(false);
 
-  const allBrands = ['CeraVe', 'The Ordinary', 'Neutrogena', 'Olay', 'Nivea'];
-  const brandId = 'Premium Skincare';
+  const allBrands = ["CeraVe", "The Ordinary", "Neutrogena", "Olay", "Nivea"];
+  const brandId = "Premium Skincare";
 
-  const filteredProducts = mockProducts.filter(product => {
-    const matchesName = product.name.toLowerCase().includes(filterName.toLowerCase());
+  const filteredProducts = mockProducts.filter((product) => {
+    const matchesName = product.name
+      .toLowerCase()
+      .includes(filterName.toLowerCase());
     const matchesBrand = !filterBrand || product.brand === filterBrand;
-    const matchesMinPrice = !filterMinPrice || Number(product.price) >= parseFloat(filterMinPrice);
-    const matchesMaxPrice = !filterMaxPrice || Number(product.price) <= parseFloat(filterMaxPrice);
+    const matchesMinPrice =
+      !filterMinPrice || Number(product.price) >= parseFloat(filterMinPrice);
+    const matchesMaxPrice =
+      !filterMaxPrice || Number(product.price) <= parseFloat(filterMaxPrice);
     return matchesName && matchesBrand && matchesMinPrice && matchesMaxPrice;
   });
 
@@ -32,7 +36,8 @@ const Products = () => {
             Products by {brandId}
           </h1>
           <p className="text-amber-100 text-center text-lg max-w-2xl mx-auto">
-            Discover our curated collection of premium skincare products designed specifically for African skin
+            Discover our curated collection of premium skincare products
+            designed specifically for African skin
           </p>
         </div>
       </div>
@@ -44,9 +49,11 @@ const Products = () => {
             <div className="p-2 bg-amber-100 rounded-lg">
               <Filter className="w-5 h-5 text-amber-800" />
             </div>
-            <h2 className="text-xl font-semibold text-gray-900">Filter Products</h2>
+            <h2 className="text-xl font-semibold text-gray-900">
+              Filter Products
+            </h2>
           </div>
-          
+
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4">
             {/* Search Input */}
             <div className="relative">
@@ -97,10 +104,10 @@ const Products = () => {
             {/* Clear Filters Button */}
             <button
               onClick={() => {
-                setFilterName('');
-                setFilterBrand('');
-                setFilterMinPrice('');
-                setFilterMaxPrice('');
+                setFilterName("");
+                setFilterBrand("");
+                setFilterMinPrice("");
+                setFilterMaxPrice("");
               }}
               className="px-6 py-3 bg-amber-100 text-amber-800 rounded-xl hover:bg-amber-200 transition-all font-medium"
             >
@@ -119,9 +126,12 @@ const Products = () => {
           </div>
         ) : filteredProducts.length > 0 ? (
           <ProductsList
-            products={filteredProducts.map(product => ({
+            products={filteredProducts.map((product) => ({
               ...product,
-              price: typeof product.price === 'string' ? parseFloat(product.price) : product.price
+              price:
+                typeof product.price === "string"
+                  ? parseFloat(product.price)
+                  : product.price,
             }))}
           />
         ) : (
@@ -130,14 +140,18 @@ const Products = () => {
               <div className="bg-amber-100 rounded-full p-6 w-24 h-24 mx-auto mb-6 flex items-center justify-center">
                 <ShoppingBag className="w-10 h-10 text-amber-800" />
               </div>
-              <h3 className="text-xl font-semibold text-gray-900 mb-2">No products found</h3>
-              <p className="text-gray-600 mb-6">Try adjusting your filters to see more results</p>
+              <h3 className="text-xl font-semibold text-gray-900 mb-2">
+                No products found
+              </h3>
+              <p className="text-gray-600 mb-6">
+                Try adjusting your filters to see more results
+              </p>
               <button
                 onClick={() => {
-                  setFilterName('');
-                  setFilterBrand('');
-                  setFilterMinPrice('');
-                  setFilterMaxPrice('');
+                  setFilterName("");
+                  setFilterBrand("");
+                  setFilterMinPrice("");
+                  setFilterMaxPrice("");
                 }}
                 className="bg-amber-800 text-white px-6 py-3 rounded-xl hover:bg-amber-900 transition-all font-medium"
               >

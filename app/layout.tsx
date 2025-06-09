@@ -1,9 +1,8 @@
 import type { Metadata } from "next";
 import { Geist, Geist_Mono } from "next/font/google";
 import "./globals.css";
-import Navbar from "./components/common/Navbar";
-import Footer from "./components/common/Footer";
-import Chatbot from "./components/common/Chatbot";
+import AuthProvider from "./components/providers/SessionProvider";
+import { AuthLayout } from "./(main)/auth/AuthLayout";
 
 const geistSans = Geist({
   variable: "--font-geist-sans",
@@ -25,16 +24,22 @@ export default function RootLayout({
 }: Readonly<{
   children: React.ReactNode;
 }>) {
+  // Use a client-side hook to get the current pathname
+  // But layout.tsx is a server component, so use a workaround:
+  // Only render Navbar/Footer/Chatbot if not on /auth route
   return (
     <html lang="en">
       <body
         className={`${geistSans.variable} ${geistMono.variable} antialiased `}
       >
-        <Navbar />
-        {children}
-        <Footer />
-        <Chatbot />
+        <AuthProvider>
+          <AuthLayout>{children}</AuthLayout>
+        </AuthProvider>
       </body>
     </html>
   );
 }
+
+// Move conditional rendering to a client component
+
+
