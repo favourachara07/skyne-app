@@ -1,10 +1,9 @@
 import { NextAuthOptions, DefaultSession } from "next-auth"
 import CredentialsProvider from "next-auth/providers/credentials"
 import bcrypt from "bcryptjs"
-import { PrismaAdapter } from "@next-auth/prisma-adapter"
+// Remove this line: import { PrismaAdapter } from "@next-auth/prisma-adapter"
 import { prisma } from "./prisma"
 
-// Extend NextAuth types to include 'id' on session.user
 declare module "next-auth" {
   interface Session {
     user: {
@@ -17,7 +16,7 @@ declare module "next-auth" {
 }
 
 export const authOptions: NextAuthOptions = {
-  adapter: PrismaAdapter(prisma),
+  // Remove this line: adapter: PrismaAdapter(prisma),
   providers: [
     CredentialsProvider({
       name: "credentials",
@@ -62,28 +61,23 @@ export const authOptions: NextAuthOptions = {
     signIn: "/auth/signin"
   },
   callbacks: {
-    async redirect({ url, baseUrl }) {
-      // Redirect to /welcome after successful registration
-      if (url.includes('/auth/signup')) {
-        return `${baseUrl}/welcome`
-      }
-      return baseUrl
-    },
-    async session({ token, session }) {
-      if (token) {
-        if (session.user) {
-          session.user.id = typeof token.id === "string" ? token.id : ""
-          session.user.name = token.name
-          session.user.email = token.email
-        }
-      }
-      return session
-    },
-    async jwt({ user, token }) {
+    async jwt({ token, user }) {
       if (user) {
         token.id = user.id
       }
       return token
+    },
+    async session({ token, session }) {
+      if (token) {
+        session.user.id = token.id as string
+      }
+      return session
+    },
+    async redirect({ url, baseUrl }) {
+      if (url.includes('/auth/signup')) {
+        return `${baseUrl}/welcome`
+      }
+      return baseUrl
     }
   }
 }
