@@ -27,7 +27,7 @@ const SkyneMetaBallsDemo = () => {
         <h1 
           className={`text-8xl md:text-9xl font-black tracking-wider select-none transition-all duration-300 ${
             textTouched 
-              ? 'text-white drop-shadow-2xl' 
+              ? 'text-transparent drop-shadow-2xl' 
               : 'text-transparent bg-gradient-to-r from-amber-600 via-yellow-500 to-amber-700 bg-clip-text'
           }`}
           style={{

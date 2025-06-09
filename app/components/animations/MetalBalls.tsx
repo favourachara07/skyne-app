@@ -36,7 +36,7 @@ function fract(x: number): number {
 }
 
 function hash31(p: number): number[] {
-  let r = [p * 0.1031, p * 0.103, p * 0.0973].map(fract);
+  const r = [p * 0.1031, p * 0.103, p * 0.0973].map(fract);
   const r_yzx = [r[1], r[2], r[0]];
   const dotVal =
     r[0] * (r_yzx[0] + 33.33) +
@@ -208,7 +208,7 @@ const MetaBalls: React.FC<MetaBallsProps> = ({
         iMetaBalls: { value: metaBallsUniform },
         iClumpFactor: { value: clumpFactor },
         enableTransparency: { value: enableTransparency },
-        iTextBounds: { value: new Vec3(0, 0, 0, 0) },
+        iTextBounds: { value: new Vec3(0, 0, 0) },
       },
     });
 
@@ -264,7 +264,7 @@ const MetaBalls: React.FC<MetaBallsProps> = ({
       );
       updateTextBounds();
     }
-    
+
     window.addEventListener("resize", resize);
     resize();
 
@@ -294,43 +294,52 @@ const MetaBalls: React.FC<MetaBallsProps> = ({
 
     function checkTextCollision(): boolean {
       if (!textElement || !container) return false;
-      
+
       const textRect = textElement.getBoundingClientRect();
       const containerRect = container.getBoundingClientRect();
       const scale = animationSize / gl.canvas.height;
-      
+
       // Check all metaballs for collision with text bounds
       for (let i = 0; i < effectiveBallCount; i++) {
         const ball = metaBallsUniform[i];
-        const screenX = (ball.x / scale) + gl.canvas.width * 0.5;
-        const screenY = gl.canvas.height - ((ball.y / scale) + gl.canvas.height * 0.5);
-        
+        const screenX = ball.x / scale + gl.canvas.width * 0.5;
+        const screenY =
+          gl.canvas.height - (ball.y / scale + gl.canvas.height * 0.5);
+
         const relativeX = screenX / dpr;
         const relativeY = screenY / dpr;
-        const textLeft = (textRect.left - containerRect.left);
-        const textTop = (textRect.top - containerRect.top);
+        const textLeft = textRect.left - containerRect.left;
+        const textTop = textRect.top - containerRect.top;
         const textRight = textLeft + textRect.width;
         const textBottom = textTop + textRect.height;
-        
-        if (relativeX >= textLeft - ball.z * 20 && relativeX <= textRight + ball.z * 20 &&
-            relativeY >= textTop - ball.z * 20 && relativeY <= textBottom + ball.z * 20) {
+
+        if (
+          relativeX >= textLeft - ball.z * 20 &&
+          relativeX <= textRight + ball.z * 20 &&
+          relativeY >= textTop - ball.z * 20 &&
+          relativeY <= textBottom + ball.z * 20
+        ) {
           return true;
         }
       }
-      
+
       // Check cursor ball
       const mouseScreenX = mouseBallPos.x / dpr;
       const mouseScreenY = (gl.canvas.height - mouseBallPos.y) / dpr;
-      const textLeft = (textRect.left - containerRect.left);
-      const textTop = (textRect.top - containerRect.top);
+      const textLeft = textRect.left - containerRect.left;
+      const textTop = textRect.top - containerRect.top;
       const textRight = textLeft + textRect.width;
       const textBottom = textTop + textRect.height;
-      
-      if (mouseScreenX >= textLeft - cursorBallSize * 20 && mouseScreenX <= textRight + cursorBallSize * 20 &&
-          mouseScreenY >= textTop - cursorBallSize * 20 && mouseScreenY <= textBottom + cursorBallSize * 20) {
+
+      if (
+        mouseScreenX >= textLeft - cursorBallSize * 20 &&
+        mouseScreenX <= textRight + cursorBallSize * 20 &&
+        mouseScreenY >= textTop - cursorBallSize * 20 &&
+        mouseScreenY <= textBottom + cursorBallSize * 20
+      ) {
         return true;
       }
-      
+
       return false;
     }
 
@@ -400,8 +409,9 @@ const MetaBalls: React.FC<MetaBallsProps> = ({
     onTextTouch,
   ]);
 
-  return     <div ref={containerRef} className="w-full h-full relative">
-      <div 
+  return (
+    <div ref={containerRef} className="w-full h-full relative">
+      <div
         ref={textRef}
         className="absolute inset-0 flex items-center justify-center pointer-events-none z-10"
       >
@@ -409,7 +419,8 @@ const MetaBalls: React.FC<MetaBallsProps> = ({
           SKYNE
         </h1>
       </div>
-    </div>;
+    </div>
+  );
 };
 
 export default MetaBalls;

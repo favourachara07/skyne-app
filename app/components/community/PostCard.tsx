@@ -4,6 +4,7 @@ import { PostTags } from './Tags';
 import Link from 'next/link';
 import { ChartBar, Heart, HeartIcon, ShareIcon } from 'lucide-react';
 import { Post } from './array';
+import Image from 'next/image';
 
 interface PostCardProps {
   post: Post;
@@ -25,7 +26,9 @@ export default function PostCard({ post, currentUserId, onLike }: PostCardProps)
       {/* Post Image */}
       {post.imageUrl && (
         <div className="aspect-video w-full overflow-hidden">
-          <img
+          <Image
+            width={800}
+            height={450}
             src={post.imageUrl}
             alt={post.title}
             className="w-full h-full object-cover hover:scale-105 transition-transform duration-300"

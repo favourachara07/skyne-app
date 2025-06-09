@@ -2,6 +2,7 @@
 
 import { Check } from "lucide-react";
 import { User } from "./array";
+import Image from "next/image";
 
 interface UserAvatarProps {
   user: User;
@@ -31,7 +32,9 @@ export default function UserAvatar({
   return (
     <div className="flex items-center gap-3">
       <div className="relative">
-        <img
+        <Image
+            width={size === 'sm' ? 32 : size === 'md' ? 48 : 64}
+            height={size === 'sm' ? 32 : size === 'md' ? 48 : 64}
           src={user.avatar}
           alt={user.name}
           className={`${sizeClasses[size]} rounded-full object-cover border-2 border-white shadow-sm`}
