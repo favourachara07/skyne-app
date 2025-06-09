@@ -37,7 +37,7 @@ export default function UserAvatar({
             height={size === 'sm' ? 32 : size === 'md' ? 48 : 64}
           src={user.avatar}
           alt={user.name}
-          className={`${sizeClasses[size]} rounded-full object-cover border-2 border-white shadow-sm`}
+          className={`${sizeClasses[size]} rounded-full object-cover border-2 border-white spagehadow-sm`}
         />
         {user.verified && showVerified && (
           <Check className="absolute -top-1 -right-1 w-5 h-5 text-blue-500 bg-white rounded-full" />

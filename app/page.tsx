@@ -8,7 +8,6 @@ import anim1 from "./components/animations/facial3.json";
 import { useRouter } from "next/navigation";
 import { useRef } from "react";
 import dynamic from "next/dynamic";
-import { useSession } from "next-auth/react";
 
 const Lottie = dynamic(() => import("lottie-react"), { ssr: false });
 // Animation variants
@@ -99,8 +98,6 @@ const AnimatedSection = ({
 
 const Home = () => {
   const router = useRouter();
-  const { data: session } = useSession();
-  const isAuthenticated = !!session;
 
   const handleAnalysisClick = () => {
     // router.push("/welcome");
@@ -206,21 +203,13 @@ const Home = () => {
               whileTap={{ scale: 0.95 }}
               transition={{ type: "spring", stiffness: 400, damping: 17 }}
             >
-              {isAuthenticated ? (
                 <Link
                   href="/welcome"
                   className="flex-1 bg-caramel/80 backdrop-blur-sm text-white border-2 border-amber-200 px-8 py-4 rounded-2xl shadow-xl hover:bg-caramel hover:scale-105 transition-all duration-300 font-semibold text-lg text-center block"
                 >
                   Start 60s Analysis
                 </Link>
-              ) : (
-                <Link
-                  href="/auth"
-                  className="flex-1 bg-caramel/80 backdrop-blur-sm text-white border-2 border-amber-200 px-8 py-4 rounded-2xl shadow-xl hover:bg-caramel hover:scale-105 transition-all duration-300 font-semibold text-lg text-center block"
-                >
-                  Sign Up
-                </Link>
-              )}
+              
             </motion.div>
 
             <motion.div
@@ -516,7 +505,6 @@ const Home = () => {
             className="flex flex-col sm:flex-row gap-4 justify-center max-w-md mx-auto"
             variants={fadeInUp}
           >
-            {isAuthenticated ? (
               <motion.button
                 onClick={handleStartAnalysis}
                 className="bg-white text-amber-800 px-8 py-4 rounded-2xl shadow-2xl hover:scale-105 hover:bg-amber-50 transition-all duration-300 font-bold text-lg"
@@ -526,18 +514,6 @@ const Home = () => {
               >
                 Start Free Analysis
               </motion.button>
-            ) : (
-              <motion.a
-              href='/auth'
-                onClick={handleStartAnalysis}
-                className="bg-white text-amber-800 px-8 py-4 rounded-2xl shadow-2xl hover:scale-105 hover:bg-amber-50 transition-all duration-300 font-bold text-lg"
-                whileHover={{ scale: 1.05 }}
-                whileTap={{ scale: 0.95 }}
-                transition={{ type: "spring", stiffness: 400, damping: 17 }}
-              >
-                Sign Up
-              </motion.a>
-            )}
             <motion.button
               onClick={handleExploreProducts}
               className="bg-transparent border-2 border-white text-white px-8 py-4 rounded-2xl hover:bg-white hover:text-amber-800 transition-all duration-300 font-semibold text-lg"

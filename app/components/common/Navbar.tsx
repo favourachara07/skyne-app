@@ -5,12 +5,9 @@ import { Home, ShoppingBag, User, Search, Menu, X, Users } from "lucide-react";
 import { usePathname } from "next/navigation";
 import Link from "next/link";
 import Image from "next/image";
-import { useSession } from "next-auth/react";
 
 const Navbar = () => {
   const pathname = usePathname();
-  const { data: session } = useSession();
-  const isAuthenticated = !!session;
   const [isScrolled, setIsScrolled] = useState(false);
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
   const [cartCount] = useState(0);
@@ -38,13 +35,8 @@ const Navbar = () => {
     { href: "/", label: "Home", mobileOnly: false },
     { href: "/brands", label: "Brands", mobileOnly: false },
     { href: "/products", label: "Products", mobileOnly: false },
-    // Hide these if not authenticated
-    ...(isAuthenticated
-      ? [
-          { href: "/welcome", label: "Skin Analysis", mobileOnly: false },
-          { href: "/consult", label: "Consultation", mobileOnly: false },
-        ]
-      : []),
+    { href: "/welcome", label: "Skin Analysis", mobileOnly: false },
+    { href: "/consult", label: "Consultation", mobileOnly: false },
     { href: "/about", label: "About", mobileOnly: false },
   ];
 
@@ -133,14 +125,12 @@ const Navbar = () => {
                 )}
               </Link>
               {/* Hide Free Analysis button if not authenticated */}
-              {isAuthenticated && (
                 <Link
                   href="/welcome"
                   className="bg-gradient-to-r from-amber-700 to-amber-800 text-white px-6 py-2 rounded-full font-semibold hover:from-amber-800 hover:to-amber-900 transition-all duration-200 shadow-lg hover:shadow-xl"
                 >
                   Free Analysis
                 </Link>
-              )}
             </div>
 
             {/* Mobile Menu Button */}

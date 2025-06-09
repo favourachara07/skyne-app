@@ -14,6 +14,7 @@ import {
   CheckCircle,
 } from "lucide-react";
 import Image from "next/image";
+import { useRouter } from "next/navigation";
 import { mockResults, quizQuestions } from "@/app/components/welcome/array";
 
 interface AnalysisResults {
@@ -24,10 +25,13 @@ interface AnalysisResults {
 }
 
 const SkinDiagnosticTool = () => {
+  const router = useRouter();
   const [currentStep, setCurrentStep] = useState(0);
   // Define a type for quiz answers: string for single, string[] for multiple
   type QuizAnswerValue = string | string[];
-  const [quizAnswers, setQuizAnswers] = useState<Record<string, QuizAnswerValue>>({});
+  const [quizAnswers, setQuizAnswers] = useState<
+    Record<string, QuizAnswerValue>
+  >({});
   const [selfiePreview, setSelfiePreview] = useState<string | null>(null);
   const [analysisResults, setAnalysisResults] =
     useState<AnalysisResults | null>(null);
@@ -63,8 +67,6 @@ const SkinDiagnosticTool = () => {
 
     // Simulate API call delay
     await new Promise((resolve) => setTimeout(resolve, 3000));
-
-    // Mock AI analysis results
 
     setAnalysisResults(mockResults as AnalysisResults);
     setIsAnalyzing(false);
@@ -177,7 +179,9 @@ const SkinDiagnosticTool = () => {
               key={option.value}
               onClick={() => {
                 if (question.multiple) {
-                  const current = Array.isArray(currentAnswer) ? currentAnswer : [];
+                  const current = Array.isArray(currentAnswer)
+                    ? currentAnswer
+                    : [];
                   const updated = current.includes(option.value)
                     ? current.filter((v: string) => v !== option.value)
                     : [...current, option.value];
@@ -530,16 +534,21 @@ const SkinDiagnosticTool = () => {
                   new Set(allProducts.map((p) => p.brand))
                 ).join(",");
                 // Redirect with query params for name and brand
-                window.location.href = `/products?names=${encodeURIComponent(
-                  names
-                )}&brands=${encodeURIComponent(brands)}`;
+                router.push(
+                  `/products?names=${encodeURIComponent(
+                    names
+                  )}&brands=${encodeURIComponent(brands)}`
+                );
               }}
               className="flex-1 border-cocoa/80 border-2 text-cocoa/80 py-3 px-6 rounded-lg hover:bg-cocoa font-medium transition-all hover:text-white"
             >
               Shop Recommended Products
             </button>
-            <button className="flex-1 bg-cocoa/80 text-white py-3 px-6 rounded-lg hover:bg-cocoa font-medium">
-              Book Expert Consultation
+            <button
+              onClick={() => router.push("/skincare-app")}
+              className="flex-1 bg-cocoa/80 text-white py-3 px-6 rounded-lg hover:bg-cocoa font-medium"
+            >
+              Try Advanced Skincare Tool
             </button>
           </div>
         </div>
