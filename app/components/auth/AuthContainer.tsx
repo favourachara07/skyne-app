@@ -95,6 +95,7 @@ const AuthContainer = () => {
           setError(data.message || 'Registration failed');
         }
       }
+    // eslint-disable-next-line @typescript-eslint/no-unused-vars
     } catch (_) {
       setError('Something went wrong. Please try again.');
     } finally {
