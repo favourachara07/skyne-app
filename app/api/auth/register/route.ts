@@ -3,7 +3,6 @@ import { NextRequest, NextResponse } from "next/server";
 import bcrypt from "bcryptjs";
 import { prisma } from "@/lib/prisma";
 
-
 export async function POST(request: NextRequest) {
   try {
     const { name, email, password } = await request.json();
@@ -32,13 +31,22 @@ export async function POST(request: NextRequest) {
     const hashedPassword = await bcrypt.hash(password, 12);
 
     // Create user
-    const user = await prisma.user.create({
-      data: {
-        name,
-        email,
-        password: hashedPassword,
-      },
-    });
+    let user;
+    try {
+      user = await prisma.user.create({
+        data: {
+          name,
+          email,
+          password: hashedPassword,
+        },
+      });
+    } catch (prismaError) {
+      console.error("Prisma create user error:", prismaError);
+      return NextResponse.json(
+        { message: "Database error", details: String(prismaError) },
+        { status: 500 }
+      );
+    }
 
     // Remove password from response
     // eslint-disable-next-line @typescript-eslint/no-unused-vars
@@ -54,7 +62,7 @@ export async function POST(request: NextRequest) {
   } catch (error) {
     console.error("Registration error:", error);
     return NextResponse.json(
-      { message: "Internal server error" },
+      { message: "Internal server error", details: String(error) },
       { status: 500 }
     );
   }

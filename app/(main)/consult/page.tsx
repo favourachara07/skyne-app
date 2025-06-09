@@ -92,7 +92,6 @@ const ConsultationBookingSystem = () => {
   const chatEndRef = useRef<HTMLDivElement | null>(null);
 
   // Generate available time slots
-  // eslint-disable-next-line react-hooks/exhaustive-deps
   const generateTimeSlots = () => {
     const slots = [];
     const startHour = 9;
