@@ -1,9 +1,20 @@
-import { NextAuthOptions } from "next-auth"
+import { NextAuthOptions, DefaultSession } from "next-auth"
 import CredentialsProvider from "next-auth/providers/credentials"
 import bcrypt from "bcryptjs"
 import { PrismaAdapter } from "@next-auth/prisma-adapter"
 import { prisma } from "./prisma"
- // Assuming you're using Prisma
+
+// Extend NextAuth types to include 'id' on session.user
+declare module "next-auth" {
+  interface Session {
+    user: {
+      id: string
+    } & DefaultSession["user"]
+  }
+  interface User {
+    id: string
+  }
+}
 
 export const authOptions: NextAuthOptions = {
   adapter: PrismaAdapter(prisma),
@@ -60,9 +71,11 @@ export const authOptions: NextAuthOptions = {
     },
     async session({ token, session }) {
       if (token) {
-        session.user.id = token.id
-        session.user.name = token.name
-        session.user.email = token.email
+        if (session.user) {
+          session.user.id = typeof token.id === "string" ? token.id : ""
+          session.user.name = token.name
+          session.user.email = token.email
+        }
       }
       return session
     },
