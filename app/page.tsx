@@ -71,6 +71,7 @@ const slideInFromBottom = {
 // Component for scroll-triggered animations
 interface AnimatedSectionProps {
   children: React.ReactNode;
+  // eslint-disable-next-line @typescript-eslint/no-explicit-any
   variants?: any;
   className?: string;
 }
