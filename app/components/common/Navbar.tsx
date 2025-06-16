@@ -37,6 +37,7 @@ const Navbar = () => {
     { href: "/products", label: "Products", mobileOnly: false },
     { href: "/welcome", label: "Skin Analysis", mobileOnly: false },
     { href: "/consult", label: "Consultation", mobileOnly: false },
+    { href: "/community", label: "Community", mobileOnly: false },
     { href: "/about", label: "About", mobileOnly: false },
   ];
 

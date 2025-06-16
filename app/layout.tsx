@@ -1,8 +1,9 @@
 import type { Metadata } from "next";
 import { Geist, Geist_Mono } from "next/font/google";
 import "./globals.css";
-import AuthProvider from "./components/providers/SessionProvider";
-import { AuthLayout } from "./(main)/auth/AuthLayout";
+import Navbar from "./components/common/Navbar";
+import Footer from "./components/common/Footer";
+import Chatbot from "./components/common/Chatbot";
 
 const geistSans = Geist({
   variable: "--font-geist-sans",
@@ -32,14 +33,13 @@ export default function RootLayout({
       <body
         className={`${geistSans.variable} ${geistMono.variable} antialiased `}
       >
-        <AuthProvider>
-          <AuthLayout>{children}</AuthLayout>
-        </AuthProvider>
+        <Navbar />
+        {children}
+        <Footer />
+        <Chatbot />
       </body>
     </html>
   );
 }
 
 // Move conditional rendering to a client component
-
-
