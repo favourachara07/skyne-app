@@ -6,6 +6,7 @@ const Footer = () => (
       </span>
       <span className="text-xs text-gray-400">
         Made with <span className="text-amber-500">♥</span> by Skyne Team
+        <p>Our Email: team@skyne.ng</p>
       </span>
     </div>
   </footer>

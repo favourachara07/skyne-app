@@ -44,7 +44,7 @@ export async function POST(req: NextRequest) {
     const formattedMsg = marked(assistantMsg ?? "");
 
     await Message.create({
-      user: userId,
+      user: userId,app
       body: assistantMsg, // store raw text in DB
       type: "text",
       fromChat: true,
