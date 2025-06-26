@@ -15,7 +15,12 @@ export async function POST(req: NextRequest) {
   await Message.create({ user: userId, body, type, fromChat: false });
 
   const history = await Message.find({ user: userId }).sort({ createdAt: 1 });
-  const messages = history.map(msg => ({
+  // Ensure messages conform to ChatCompletionMessageParam type
+  type ChatCompletionMessageParam = 
+    | { role: "system" | "user" | "assistant"; content: string }
+    | { role: "function"; name: string; content: string };
+
+  const messages: ChatCompletionMessageParam[] = history.map(msg => ({
     role: msg.fromChat ? "assistant" : "user",
     content: msg.body,
   }));
@@ -36,7 +41,7 @@ export async function POST(req: NextRequest) {
     const assistantMsg = chatCompletion.choices[0].message.content;
 
     // Format assistant message with Markdown before storing
-    const formattedMsg = marked(assistantMsg);
+    const formattedMsg = marked(assistantMsg ?? "");
 
     await Message.create({
       user: userId,
