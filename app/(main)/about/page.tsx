@@ -58,7 +58,7 @@ export default function About() {
       </div>
 
       {/* Company Owners Section - Desktop (ChromaGrid) */}
-      <div className="laptop:flex hidden justify-center items-center bg-gradient-to-b from-slate-50 to-white" style={{ height: "600px", position: "relative" }}>
+      {/* <div className="laptop:flex hidden justify-center items-center bg-gradient-to-b from-slate-50 to-white" style={{ height: "600px", position: "relative" }}>
         <div className="absolute inset-0 bg-[radial-gradient(circle_at_center,_rgba(251,191,36,0.1)_0%,_transparent_70%)]"></div>
         <ChromaGrid
           items={items}
@@ -67,99 +67,9 @@ export default function About() {
           fadeOut={0.6}
           ease="power3.out"
         />
-      </div>
+      </div> */}
 
-      {/* Company Owners Section - Mobile/Tablet */}
-      <div className="1093:hidden py-16 px-4 sm:px-6 lg:px-8 bg-gradient-to-b from-slate-50 to-white">
-        <div className="max-w-6xl mx-auto">
-          <div className="text-center mb-12">
-            <h2 className="text-3xl sm:text-4xl font-bold text-gray-900 mb-4">
-              Meet Our <span className="text-amber-600">Leadership</span>
-            </h2>
-            <p className="text-lg text-gray-600 max-w-2xl mx-auto">
-              The visionary team behind Skyne&apos;s innovative approach to skincare
-            </p>
-          </div>
-          
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 sm:gap-12">
-            {items.map((member, index) => (
-              <div
-                key={index}
-                className="group relative bg-white rounded-3xl p-8 shadow-lg hover:shadow-2xl transition-all duration-500 transform hover:-translate-y-2 border border-gray-100"
-                style={{
-                  background: `linear-gradient(135deg, white 0%, ${member.borderColor}08 100%)`,
-                }}
-              >
-                {/* Card glow effect */}
-                <div 
-                  className="absolute inset-0 rounded-3xl opacity-0 group-hover:opacity-100 transition-opacity duration-500 blur-xl"
-                  style={{
-                    background: `linear-gradient(135deg, ${member.borderColor}20, transparent)`,
-                  }}
-                ></div>
-                
-                <div className="relative z-10">
-                  {/* Profile Image */}
-                  <div className="relative mb-6 mx-auto w-32 h-32">
-                    <div
-                      className="absolute inset-0 rounded-full blur-md opacity-60 group-hover:opacity-80 transition-opacity duration-300"
-                      style={{ backgroundColor: member.borderColor }}
-                    ></div>
-                    <Image
-                    height={128}
-                    width={128}
-                      src={member.image}
-                      alt={member.title}
-                      className="relative w-full h-full rounded-full object-cover border-4 border-white shadow-xl group-hover:scale-105 transition-transform duration-300"
-                      style={{ borderColor: member.borderColor }}
-                    />
-                    
-                    {/* Online indicator */}
-                    <div
-                      className="absolute bottom-2 right-2 w-6 h-6 rounded-full border-3 border-white shadow-lg"
-                      style={{ backgroundColor: member.borderColor }}
-                    ></div>
-                  </div>
-                  
-                  {/* Content */}
-                  <div className="text-center">
-                    <h3 className="text-xl font-bold text-gray-900 mb-2 group-hover:text-gray-700 transition-colors">
-                      {member.title}
-                    </h3>
-                    <p 
-                      className="text-sm font-semibold mb-3 uppercase tracking-wider"
-                      style={{ color: member.borderColor }}
-                    >
-                      {member.subtitle}
-                    </p>
-                    <p className="text-gray-500 text-sm mb-6 font-medium">
-                      {member.handle}
-                    </p>
-                    
-                    {/* Action Button */}
-                    <a
-                      href={member.url}
-                      target="_blank"
-                      rel="noopener noreferrer"
-                      className="inline-flex items-center px-6 py-2.5 rounded-full text-sm font-semibold text-white transition-all duration-300 hover:scale-105 hover:shadow-lg"
-                      style={{
-                        background: member.gradient,
-                      }}
-                    >
-                      <svg className="w-4 h-4 mr-2" fill="currentColor" viewBox="0 0 24 24">
-                        <path d="M12 0C5.37 0 0 5.37 0 12c0 5.31 3.435 9.795 8.205 11.385.6.105.825-.255.825-.57 0-.285-.015-1.23-.015-2.235-3.015.555-3.795-.735-4.035-1.41-.135-.345-.72-1.41-1.23-1.695-.42-.225-1.02-.78-.015-.795.945-.015 1.62.87 1.845 1.23 1.08 1.815 2.805 1.305 3.495.99.105-.78.42-1.305.765-1.605-2.67-.3-5.46-1.335-5.46-5.925 0-1.305.465-2.385 1.23-3.225-.12-.3-.54-1.53.12-3.18 0 0 1.005-.315 3.3 1.23.96-.27 1.98-.405 3-.405s2.04.135 3 .405c2.295-1.56 3.3-1.23 3.3-1.23.66 1.65.24 2.88.12 3.18.765.84 1.23 1.905 1.23 3.225 0 4.605-2.805 5.625-5.475 5.925.435.375.81 1.095.81 2.22 0 1.605-.015 2.895-.015 3.3 0 .315.225.69.825.57A12.02 12.02 0 0024 12c0-6.63-5.37-12-12-12z"/>
-                      </svg>
-                      View Profile
-                    </a>
-                  </div>
-                </div>
-              </div>
-            ))}
-          </div>
-        </div>
-      </div>
-
-      {/* Main Content */}
+        {/* Main Content */}
       <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 py-16">
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-16">
           
@@ -325,6 +235,98 @@ export default function About() {
           </div>
         </div>
       </div>
+
+      {/* Company Owners Section - Mobile/Tablet */}
+      <div className="1093:hidden py-16 px-4 sm:px-6 lg:px-8 bg-gradient-to-b from-slate-50 to-white">
+        <div className="max-w-6xl mx-auto">
+          <div className="text-center mb-12">
+            <h2 className="text-3xl sm:text-4xl font-bold text-gray-900 mb-4">
+              Meet Our <span className="text-amber-600">Leadership</span>
+            </h2>
+            <p className="text-lg text-gray-600 max-w-2xl mx-auto">
+              The visionary team behind Skyne&apos;s innovative approach to skincare
+            </p>
+          </div>
+          
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 sm:gap-12">
+            {items.map((member, index) => (
+              <div
+                key={index}
+                className="group relative bg-white rounded-3xl p-8 shadow-lg hover:shadow-2xl transition-all duration-500 transform hover:-translate-y-2 border border-gray-100"
+                style={{
+                  background: `linear-gradient(135deg, white 0%, ${member.borderColor}08 100%)`,
+                }}
+              >
+                {/* Card glow effect */}
+                <div 
+                  className="absolute inset-0 rounded-3xl opacity-0 group-hover:opacity-100 transition-opacity duration-500 blur-xl"
+                  style={{
+                    background: `linear-gradient(135deg, ${member.borderColor}20, transparent)`,
+                  }}
+                ></div>
+                
+                <div className="relative z-10">
+                  {/* Profile Image */}
+                  <div className="relative mb-6 mx-auto w-32 h-32">
+                    <div
+                      className="absolute inset-0 rounded-full blur-md opacity-60 group-hover:opacity-80 transition-opacity duration-300"
+                      style={{ backgroundColor: member.borderColor }}
+                    ></div>
+                    <Image
+                    height={128}
+                    width={128}
+                      src={member.image}
+                      alt={member.title}
+                      className="relative w-full h-full rounded-full object-cover border-4 border-white shadow-xl group-hover:scale-105 transition-transform duration-300"
+                      style={{ borderColor: member.borderColor }}
+                    />
+                    
+                    {/* Online indicator */}
+                    <div
+                      className="absolute bottom-2 right-2 w-6 h-6 rounded-full border-3 border-white shadow-lg"
+                      style={{ backgroundColor: member.borderColor }}
+                    ></div>
+                  </div>
+                  
+                  {/* Content */}
+                  <div className="text-center">
+                    <h3 className="text-xl font-bold text-gray-900 mb-2 group-hover:text-gray-700 transition-colors">
+                      {member.title}
+                    </h3>
+                    <p 
+                      className="text-sm font-semibold mb-3 uppercase tracking-wider"
+                      style={{ color: member.borderColor }}
+                    >
+                      {member.subtitle}
+                    </p>
+                    <p className="text-gray-500 text-sm mb-6 font-medium">
+                      {member.handle}
+                    </p>
+                    
+                    {/* Action Button */}
+                    <a
+                      href={member.url}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="inline-flex items-center px-6 py-2.5 rounded-full text-sm font-semibold text-white transition-all duration-300 hover:scale-105 hover:shadow-lg"
+                      style={{
+                        background: member.gradient,
+                      }}
+                    >
+                      <svg className="w-4 h-4 mr-2" fill="currentColor" viewBox="0 0 24 24">
+                        <path d="M12 0C5.37 0 0 5.37 0 12c0 5.31 3.435 9.795 8.205 11.385.6.105.825-.255.825-.57 0-.285-.015-1.23-.015-2.235-3.015.555-3.795-.735-4.035-1.41-.135-.345-.72-1.41-1.23-1.695-.42-.225-1.02-.78-.015-.795.945-.015 1.62.87 1.845 1.23 1.08 1.815 2.805 1.305 3.495.99.105-.78.42-1.305.765-1.605-2.67-.3-5.46-1.335-5.46-5.925 0-1.305.465-2.385 1.23-3.225-.12-.3-.54-1.53.12-3.18 0 0 1.005-.315 3.3 1.23.96-.27 1.98-.405 3-.405s2.04.135 3 .405c2.295-1.56 3.3-1.23 3.3-1.23.66 1.65.24 2.88.12 3.18.765.84 1.23 1.905 1.23 3.225 0 4.605-2.805 5.625-5.475 5.925.435.375.81 1.095.81 2.22 0 1.605-.015 2.895-.015 3.3 0 .315.225.69.825.57A12.02 12.02 0 0024 12c0-6.63-5.37-12-12-12z"/>
+                      </svg>
+                      View Profile
+                    </a>
+                  </div>
+                </div>
+              </div>
+            ))}
+          </div>
+        </div>
+      </div>
+
+      
 
       {/* Footer CTA */}
       <div className="bg-gradient-to-r from-amber-600 via-orange-500 to-amber-700 py-16">
