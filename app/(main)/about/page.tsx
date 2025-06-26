@@ -1,4 +1,4 @@
-import ChromaGrid from "@/app/components/animations/ChromaGrid";
+// import ChromaGrid from "@/app/components/animations/ChromaGrid";
 import Image from "next/image";
 
 export default function About() {

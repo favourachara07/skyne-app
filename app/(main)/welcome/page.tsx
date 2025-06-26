@@ -22,6 +22,7 @@ import {
   Star,
   Share2,
 } from "lucide-react";
+import Image from "next/image";
 
 // Mock data (since we don't have the original arrays)
 const quizQuestions = [
@@ -312,7 +313,9 @@ const SkinDiagnosticTool = () => {
             {selfiePreview ? (
               <div className="space-y-8">
                 <div className="relative inline-block group">
-                  <img
+                  <Image
+                  height={400}
+                  width={400}
                     src={selfiePreview}
                     alt="Selfie preview"
                     className="mx-auto max-w-sm max-h-96 object-cover rounded-3xl shadow-2xl group-hover:scale-105 transition-transform duration-300"
