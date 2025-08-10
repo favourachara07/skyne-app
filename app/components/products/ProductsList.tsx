@@ -15,6 +15,7 @@ interface Product {
 
 interface ProductsListProps {
   products: Product[];
+  currency: string;
 }
 
 export default function ProductsList({ products }: ProductsListProps) {

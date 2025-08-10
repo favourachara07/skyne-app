@@ -5,7 +5,7 @@ export const mockProducts = [
     name: "Hydrating Facial Cleanser",
     brand: "CeraVe",
     image:
-      "https://images.unsplash.com/photo-1515378791036-0648a3ef77b2?auto=format&fit=crop&w=400&q=80&fm=webp",
+      "https://res.cloudinary.com/dhyjpjwdo/image/upload/v1754846753/orma4_nlfw6t.webp",
     price: 13700,
     description: "Gentle cleanser for normal to dry skin.",
   },
@@ -14,7 +14,7 @@ export const mockProducts = [
     name: "Ultra Facial Cream",
     brand: "Kiehl's",
     image:
-      "https://images.unsplash.com/photo-1506744038136-46273834b3fb?auto=format&fit=crop&w=400&q=80&fm=webp",
+      "https://res.cloudinary.com/dhyjpjwdo/image/upload/v1754846752/coco1_qginav.webp",
     price: 6900,
     description: "Lightweight moisturizer for all-day hydration.",
   },
@@ -23,7 +23,7 @@ export const mockProducts = [
     name: "Vitamin C Serum",
     brand: "TruSkin",
     image:
-      "https://images.unsplash.com/photo-1517841905240-472988babdf9?auto=format&fit=crop&w=400&q=80&fm=webp",
+      "https://res.cloudinary.com/dhyjpjwdo/image/upload/v1754846753/coco2_viw7sh.webp",
     price: 14300,
     description: "Brightens skin and reduces dark spots.",
   },
@@ -32,7 +32,7 @@ export const mockProducts = [
     name: "Daily Moisturizing Lotion",
     brand: "Aveeno",
     image:
-      "https://images.unsplash.com/photo-1464983953574-0892a716854b?auto=format&fit=crop&w=400&q=80&fm=webp",
+      "https://res.cloudinary.com/dhyjpjwdo/image/upload/v1754846752/arami1_uk3h6x.jpg",
     price: 5700,
     description: "Soothes and hydrates dry skin.",
   },
@@ -41,7 +41,7 @@ export const mockProducts = [
     name: "Retinol 0.5% in Squalane",
     brand: "The Ordinary",
     image:
-      "https://images.unsplash.com/photo-1519125323398-675f0ddb6308?auto=format&fit=crop&w=400&q=80&fm=webp",
+      "https://res.cloudinary.com/dhyjpjwdo/image/upload/v1754846752/sheaproduct_vuazqt.jpg",
     price: 9800,
     description: "Reduces signs of aging and improves skin texture.",
   },
@@ -50,7 +50,7 @@ export const mockProducts = [
     name: "Sunscreen SPF 50",
     brand: "Neutrogena",
     image:
-      "https://images.unsplash.com/photo-1465101046530-73398c7f28ca?auto=format&fit=crop&w=400&q=80&fm=webp",
+      "https://res.cloudinary.com/dhyjpjwdo/image/upload/v1754846753/orma5_efw3ra.webp",
     price: 12700,
     description: "Broad spectrum sun protection.",
   },
@@ -59,7 +59,7 @@ export const mockProducts = [
     name: "Hydro Boost Water Gel",
     brand: "Neutrogena",
     image:
-      "https://images.unsplash.com/photo-1504674900247-0877df9cc836?auto=format&fit=crop&w=400&q=80&fm=webp",
+      "https://res.cloudinary.com/dhyjpjwdo/image/upload/v1754846753/shea3_ceioyi.jpg",
     price: 5200,
     description: "Oil-free gel moisturizer for intense hydration.",
   },
@@ -68,7 +68,7 @@ export const mockProducts = [
     name: "Blemish + Age Defense",
     brand: "SkinCeuticals",
     image:
-      "https://images.unsplash.com/photo-1512436991641-6745cdb1723f?auto=format&fit=crop&w=400&q=80&fm=webp",
+      "https://res.cloudinary.com/dhyjpjwdo/image/upload/v1754846752/orma2_gxdcpz.webp",
     price: 14900,
     description: "Targets blemishes and visible signs of aging.",
   },
@@ -77,7 +77,7 @@ export const mockProducts = [
     name: "Toleriane Double Repair Face Moisturizer",
     brand: "La Roche-Posay",
     image:
-      "https://images.unsplash.com/photo-1515378791036-0648a3ef77b2?auto=format&fit=crop&w=400&q=80&fm=webp",
+      "https://res.cloudinary.com/dhyjpjwdo/image/upload/v1754846752/orma1_fit2pm.webp",
     price: 8200,
     description: "Restores healthy-looking skin.",
   },
@@ -86,7 +86,7 @@ export const mockProducts = [
     name: "Facial Treatment Essence",
     brand: "SK-II",
     image:
-      "https://images.unsplash.com/photo-1506744038136-46273834b3fb?auto=format&fit=crop&w=400&q=80&fm=webp",
+      "https://res.cloudinary.com/dhyjpjwdo/image/upload/v1754846752/arami2_nnyemf.webp",
     price: 13400,
     description: "Improves skin texture and radiance.",
   },
@@ -95,7 +95,7 @@ export const mockProducts = [
     name: "Niacinamide 10% + Zinc 1%",
     brand: "The Ordinary",
     image:
-      "https://images.unsplash.com/photo-1517841905240-472988babdf9?auto=format&fit=crop&w=400&q=80&fm=webp",
+      "https://res.cloudinary.com/dhyjpjwdo/image/upload/v1754846751/shea2product_hga4vm.jpg",
     price: 7600,
     description: "Reduces blemishes and congestion.",
   },
@@ -104,7 +104,7 @@ export const mockProducts = [
     name: "Ultra Repair Cream",
     brand: "First Aid Beauty",
     image:
-      "https://images.unsplash.com/photo-1464983953574-0892a716854b?auto=format&fit=crop&w=400&q=80&fm=webp",
+      "https://res.cloudinary.com/dhyjpjwdo/image/upload/v1754846753/orma4_nlfw6t.webp",
     price: 10500,
     description: "Intense hydration for dry, distressed skin.",
   },
@@ -113,7 +113,7 @@ export const mockProducts = [
     name: "Calendula Herbal Extract Toner",
     brand: "Kiehl's",
     image:
-      "https://images.unsplash.com/photo-1519125323398-675f0ddb6308?auto=format&fit=crop&w=400&q=80&fm=webp",
+      "https://res.cloudinary.com/dhyjpjwdo/image/upload/v1754846752/coco1_qginav.webp",
     price: 5900,
     description: "Alcohol-free toner for soothing skin.",
   },
@@ -122,7 +122,7 @@ export const mockProducts = [
     name: "Cleansing Balm",
     brand: "Banila Co",
     image:
-      "https://images.unsplash.com/photo-1465101046530-73398c7f28ca?auto=format&fit=crop&w=400&q=80&fm=webp",
+      "https://res.cloudinary.com/dhyjpjwdo/image/upload/v1754846753/coco2_viw7sh.webp",
     price: 14100,
     description: "Melts away makeup and impurities.",
   },
@@ -131,7 +131,7 @@ export const mockProducts = [
     name: "Rice Water Bright Foaming Cleanser",
     brand: "The Face Shop",
     image:
-      "https://images.unsplash.com/photo-1504674900247-0877df9cc836?auto=format&fit=crop&w=400&q=80&fm=webp",
+      "https://res.cloudinary.com/dhyjpjwdo/image/upload/v1754846752/arami1_uk3h6x.jpg",
     price: 8800,
     description: "Brightens and cleanses skin.",
   },
@@ -140,7 +140,7 @@ export const mockProducts = [
     name: "Snail Mucin Essence",
     brand: "COSRX",
     image:
-      "https://images.unsplash.com/photo-1512436991641-6745cdb1723f?auto=format&fit=crop&w=400&q=80&fm=webp",
+      "https://res.cloudinary.com/dhyjpjwdo/image/upload/v1754846752/sheaproduct_vuazqt.jpg",
     price: 9700,
     description: "Repairs and hydrates skin barrier.",
   },
@@ -149,7 +149,7 @@ export const mockProducts = [
     name: "Green Tea Seed Serum",
     brand: "Innisfree",
     image:
-      "https://images.unsplash.com/photo-1515378791036-0648a3ef77b2?auto=format&fit=crop&w=400&q=80&fm=webp",
+      "https://res.cloudinary.com/dhyjpjwdo/image/upload/v1754846753/orma5_efw3ra.webp",
     price: 12300,
     description: "Hydrating serum with green tea extract.",
   },
@@ -158,7 +158,7 @@ export const mockProducts = [
     name: "Glow Recipe Watermelon Glow Sleeping Mask",
     brand: "Glow Recipe",
     image:
-      "https://images.unsplash.com/photo-1506744038136-46273834b3fb?auto=format&fit=crop&w=400&q=80&fm=webp",
+      "https://res.cloudinary.com/dhyjpjwdo/image/upload/v1754846753/shea3_ceioyi.jpg",
     price: 5400,
     description: "Hydrating overnight mask for glowing skin.",
   },
@@ -167,7 +167,7 @@ export const mockProducts = [
     name: "Advanced Snail 92 All In One Cream",
     brand: "COSRX",
     image:
-      "https://images.unsplash.com/photo-1517841905240-472988babdf9?auto=format&fit=crop&w=400&q=80&fm=webp",
+      "https://res.cloudinary.com/dhyjpjwdo/image/upload/v1754846752/orma2_gxdcpz.webp",
     price: 11500,
     description: "Moisturizer for repairing and soothing skin.",
   },
@@ -176,7 +176,7 @@ export const mockProducts = [
     name: "Pure Vitamin C Serum",
     brand: "Klairs",
     image:
-      "https://images.unsplash.com/photo-1464983953574-0892a716854b?auto=format&fit=crop&w=400&q=80&fm=webp",
+      "https://res.cloudinary.com/dhyjpjwdo/image/upload/v1754846752/arami2_nnyemf.webp",
     price: 6700,
     description: "Brightens and evens skin tone.",
   },
@@ -185,7 +185,7 @@ export const mockProducts = [
     name: "Centella Green Level Buffet Serum",
     brand: "Purito",
     image:
-      "https://images.unsplash.com/photo-1519125323398-675f0ddb6308?auto=format&fit=crop&w=400&q=80&fm=webp",
+      "https://res.cloudinary.com/dhyjpjwdo/image/upload/v1754846751/shea2product_hga4vm.jpg",
     price: 15300,
     description: "Calms and strengthens sensitive skin.",
   },
@@ -194,7 +194,7 @@ export const mockProducts = [
     name: "Barrier Repair Cream",
     brand: "Dr. Jart+",
     image:
-      "https://images.unsplash.com/photo-1465101046530-73398c7f28ca?auto=format&fit=crop&w=400&q=80&fm=webp",
+      "https://res.cloudinary.com/dhyjpjwdo/image/upload/v1754846753/orma4_nlfw6t.webp",
     price: 6000,
     description: "Strengthens skin barrier and locks in moisture.",
   },
@@ -203,7 +203,7 @@ export const mockProducts = [
     name: "Hydra Life Fresh Hydration Sorbet Creme",
     brand: "Dior",
     image:
-      "https://images.unsplash.com/photo-1504674900247-0877df9cc836?auto=format&fit=crop&w=400&q=80&fm=webp",
+      "https://res.cloudinary.com/dhyjpjwdo/image/upload/v1754846752/coco1_qginav.webp",
     price: 14200,
     description: "Lightweight hydration for radiant skin.",
   },
@@ -212,7 +212,7 @@ export const mockProducts = [
     name: "Moisture Surge 72-Hour Auto-Replenishing Hydrator",
     brand: "Clinique",
     image:
-      "https://images.unsplash.com/photo-1512436991641-6745cdb1723f?auto=format&fit=crop&w=400&q=80&fm=webp",
+      "https://res.cloudinary.com/dhyjpjwdo/image/upload/v1754846752/arami1_uk3h6x.jpg",
     price: 9800,
     description: "Long-lasting hydration for all skin types.",
   },
@@ -221,7 +221,7 @@ export const mockProducts = [
     name: "Time Revolution The First Treatment Essence",
     brand: "Missha",
     image:
-      "https://images.unsplash.com/photo-1515378791036-0648a3ef77b2?auto=format&fit=crop&w=400&q=80&fm=webp",
+      "https://res.cloudinary.com/dhyjpjwdo/image/upload/v1754846752/sheaproduct_vuazqt.jpg",
     price: 7300,
     description: "Improves skin tone and texture.",
   },
@@ -230,7 +230,7 @@ export const mockProducts = [
     name: "Propolis Light Ampoule",
     brand: "COSRX",
     image:
-      "https://images.unsplash.com/photo-1506744038136-46273834b3fb?auto=format&fit=crop&w=400&q=80&fm=webp",
+      "https://res.cloudinary.com/dhyjpjwdo/image/upload/v1754846753/orma5_efw3ra.webp",
     price: 12900,
     description: "Nourishes and revitalizes dull skin.",
   },
@@ -239,7 +239,7 @@ export const mockProducts = [
     name: "Rice Overnight Spa Mask",
     brand: "COSRX",
     image:
-      "https://images.unsplash.com/photo-1517841905240-472988babdf9?auto=format&fit=crop&w=400&q=80&fm=webp",
+      "https://res.cloudinary.com/dhyjpjwdo/image/upload/v1754846752/orma2_gxdcpz.webp",
     price: 5600,
     description: "Brightens and softens skin overnight.",
   },
@@ -248,7 +248,7 @@ export const mockProducts = [
     name: "Hydration Boost Gel Cream",
     brand: "Paula's Choice",
     image:
-      "https://images.unsplash.com/photo-1464983953574-0892a716854b?auto=format&fit=crop&w=400&q=80&fm=webp",
+      "https://res.cloudinary.com/dhyjpjwdo/image/upload/v1754846753/coco2_viw7sh.webp",
     price: 11200,
     description: "Oil-free hydration for sensitive skin.",
   },
@@ -257,7 +257,7 @@ export const mockProducts = [
     name: "Super Aqua Max Combination Watery Cream",
     brand: "Nature Republic",
     image:
-      "https://images.unsplash.com/photo-1519125323398-675f0ddb6308?auto=format&fit=crop&w=400&q=80&fm=webp",
+      "https://res.cloudinary.com/dhyjpjwdo/image/upload/v1754846752/arami1_uk3h6x.jpg",
     price: 8700,
     description: "Moisturizes and refreshes combination skin.",
   },
@@ -266,7 +266,7 @@ export const mockProducts = [
     name: "Water Bank Moisture Cream",
     brand: "Laneige",
     image:
-      "https://images.unsplash.com/photo-1465101046530-73398c7f28ca?auto=format&fit=crop&w=400&q=80&fm=webp",
+      "https://res.cloudinary.com/dhyjpjwdo/image/upload/v1754846753/orma4_nlfw6t.webp",
     price: 10100,
     description: "Deep hydration for soft, smooth skin.",
   },
