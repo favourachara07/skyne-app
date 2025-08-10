@@ -1,23 +1,35 @@
 // app/community/[slug]/page.tsx
-'use client';
+"use client";
 
-import { useState, useMemo } from 'react';
-import { useParams } from 'next/navigation';
-import { mockComments, mockPosts, mockUsers, Post, Comment } from '@/app/components/community/array';
-import Link from 'next/link';
-import { ArrowLeftIcon, ChartBar, Heart, HeartIcon, ShareIcon } from 'lucide-react';
-import Image from 'next/image';
-import UserAvatar from '@/app/components/community/UserAvatar';
-import { PostTags } from '@/app/components/community/Tags';
-import CommentSection from '@/app/components/community/CommentSection';
+import { useState, useMemo } from "react";
+import { useParams } from "next/navigation";
+import {
+  mockComments,
+  mockPosts,
+  mockUsers,
+  Post,
+  Comment,
+} from "@/app/components/community/array";
+import Link from "next/link";
+import {
+  ArrowLeftIcon,
+  ChartBar,
+  Heart,
+  HeartIcon,
+  ShareIcon,
+} from "lucide-react";
+import Image from "next/image";
+import UserAvatar from "@/app/components/community/UserAvatar";
+import { PostTags } from "@/app/components/community/Tags";
+import CommentSection from "@/app/components/community/CommentSection";
 
 export default function SinglePostPage() {
   const params = useParams();
-  const slug = params.slug as string;
+  const slug = params?.slug as string;
 
   // Find the post by slug
   const post = useMemo(() => {
-    return mockPosts.find(p => p.slug === slug);
+    return mockPosts.find((p) => p.slug === slug);
   }, [slug]);
 
   const [postData, setPostData] = useState<Post | null>(post || null);
@@ -30,8 +42,12 @@ export default function SinglePostPage() {
     return (
       <div className="min-h-screen bg-gray-50 flex items-center justify-center">
         <div className="text-center">
-          <h1 className="text-2xl font-bold text-gray-900 mb-4">Post Not Found</h1>
-          <p className="text-gray-600 mb-6">The post you&apos;re looking for doesn&apos;t exist.</p>
+          <h1 className="text-2xl font-bold text-gray-900 mb-4">
+            Post Not Found
+          </h1>
+          <p className="text-gray-600 mb-6">
+            The post you&apos;re looking for doesn&apos;t exist.
+          </p>
           <Link
             href="/community"
             className="px-6 py-3 bg-orange-500 hover:bg-orange-600 text-white rounded-lg font-medium transition-colors"
@@ -43,20 +59,22 @@ export default function SinglePostPage() {
     );
   }
 
-  const isLiked = currentUser ? postData.likedBy.includes(currentUser.id) : false;
+  const isLiked = currentUser
+    ? postData.likedBy.includes(currentUser.id)
+    : false;
   const timeAgo = getTimeAgo(postData.createdAt);
 
   const handleLikePost = () => {
-    setPostData(prev => {
+    setPostData((prev) => {
       if (!prev) return prev;
-      
+
       const newIsLiked = !prev.likedBy.includes(currentUser.id);
       return {
         ...prev,
         likes: newIsLiked ? prev.likes + 1 : prev.likes - 1,
-        likedBy: newIsLiked 
+        likedBy: newIsLiked
           ? [...prev.likedBy, currentUser.id]
-          : prev.likedBy.filter(id => id !== currentUser.id)
+          : prev.likedBy.filter((id) => id !== currentUser.id),
       };
     });
   };
@@ -70,32 +88,38 @@ export default function SinglePostPage() {
       postId: postData.id,
       parentId,
       likes: 0,
-      likedBy: []
+      likedBy: [],
     };
 
-    setComments(prev => [...prev, newComment]);
-    
+    setComments((prev) => [...prev, newComment]);
+
     // Update post comment count
-    setPostData(prev => prev ? {
-      ...prev,
-      comments: [...prev.comments, newComment]
-    } : prev);
+    setPostData((prev) =>
+      prev
+        ? {
+            ...prev,
+            comments: [...prev.comments, newComment],
+          }
+        : prev
+    );
   };
 
   const handleLikeComment = (commentId: string) => {
-    setComments(prev => prev.map(comment => {
-      if (comment.id === commentId) {
-        const isCommentLiked = comment.likedBy.includes(currentUser.id);
-        return {
-          ...comment,
-          likes: isCommentLiked ? comment.likes - 1 : comment.likes + 1,
-          likedBy: isCommentLiked 
-            ? comment.likedBy.filter(id => id !== currentUser.id)
-            : [...comment.likedBy, currentUser.id]
-        };
-      }
-      return comment;
-    }));
+    setComments((prev) =>
+      prev.map((comment) => {
+        if (comment.id === commentId) {
+          const isCommentLiked = comment.likedBy.includes(currentUser.id);
+          return {
+            ...comment,
+            likes: isCommentLiked ? comment.likes - 1 : comment.likes + 1,
+            likedBy: isCommentLiked
+              ? comment.likedBy.filter((id) => id !== currentUser.id)
+              : [...comment.likedBy, currentUser.id],
+          };
+        }
+        return comment;
+      })
+    );
   };
 
   return (
@@ -137,16 +161,20 @@ export default function SinglePostPage() {
             </div>
 
             {/* Title */}
-            <h1 className="text-2xl font-bold text-gray-900 mb-2">{postData.title}</h1>
+            <h1 className="text-2xl font-bold text-gray-900 mb-2">
+              {postData.title}
+            </h1>
 
             {/* Tags */}
             <PostTags tags={postData.tags} className="mb-4" />
 
             {/* Content */}
             <div className="prose prose-sm max-w-none mb-6">
-              {postData.content.split('\n').map((para, idx) =>
-                para.trim() ? <p key={idx}>{para}</p> : <br key={idx} />
-              )}
+              {postData.content
+                .split("\n")
+                .map((para, idx) =>
+                  para.trim() ? <p key={idx}>{para}</p> : <br key={idx} />
+                )}
             </div>
 
             {/* Actions */}
@@ -155,8 +183,8 @@ export default function SinglePostPage() {
                 onClick={handleLikePost}
                 className={`flex items-center gap-2 px-3 py-1.5 rounded-lg transition-all duration-200 ${
                   isLiked
-                    ? 'bg-red-50 text-red-600 hover:bg-red-100'
-                    : 'text-gray-600 hover:bg-gray-50 hover:text-red-600'
+                    ? "bg-red-50 text-red-600 hover:bg-red-100"
+                    : "text-gray-600 hover:bg-gray-50 hover:text-red-600"
                 }`}
               >
                 {isLiked ? (
@@ -171,7 +199,9 @@ export default function SinglePostPage() {
                 className="flex items-center gap-2 px-3 py-1.5 rounded-lg text-gray-600 hover:bg-gray-50 hover:text-blue-600 transition-all duration-200"
               >
                 <ChartBar className="w-5 h-5" />
-                <span className="text-sm font-medium">{postData.comments.length}</span>
+                <span className="text-sm font-medium">
+                  {postData.comments.length}
+                </span>
               </a>
               <button
                 className="flex items-center gap-2 px-3 py-1.5 rounded-lg text-gray-600 hover:bg-gray-50 hover:text-green-600 transition-all duration-200"
@@ -179,11 +209,11 @@ export default function SinglePostPage() {
                   if (navigator.share) {
                     navigator.share({
                       title: postData.title,
-                      url: window.location.href
+                      url: window.location.href,
                     });
                   } else {
                     navigator.clipboard.writeText(window.location.href);
-                    alert('Link copied to clipboard!');
+                    alert("Link copied to clipboard!");
                   }
                 }}
               >
@@ -215,10 +245,11 @@ function getTimeAgo(dateString: string): string {
   const now = new Date();
   const diffInSeconds = Math.floor((now.getTime() - date.getTime()) / 1000);
 
-  if (diffInSeconds < 60) return 'Just now';
+  if (diffInSeconds < 60) return "Just now";
   if (diffInSeconds < 3600) return `${Math.floor(diffInSeconds / 60)}m ago`;
   if (diffInSeconds < 86400) return `${Math.floor(diffInSeconds / 3600)}h ago`;
-  if (diffInSeconds < 604800) return `${Math.floor(diffInSeconds / 86400)}d ago`;
+  if (diffInSeconds < 604800)
+    return `${Math.floor(diffInSeconds / 86400)}d ago`;
 
   return date.toLocaleDateString();
 }
