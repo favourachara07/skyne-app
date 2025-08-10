@@ -6,7 +6,7 @@ export const mockProducts = [
     brand: "CeraVe",
     image:
       "https://images.unsplash.com/photo-1515378791036-0648a3ef77b2?auto=format&fit=crop&w=400&q=80&fm=webp",
-    price: "$14.99",
+    price: 13700,
     description: "Gentle cleanser for normal to dry skin.",
   },
   {
@@ -15,7 +15,7 @@ export const mockProducts = [
     brand: "Kiehl's",
     image:
       "https://images.unsplash.com/photo-1506744038136-46273834b3fb?auto=format&fit=crop&w=400&q=80&fm=webp",
-    price: "$32.00",
+    price: 6900,
     description: "Lightweight moisturizer for all-day hydration.",
   },
   {
@@ -24,7 +24,7 @@ export const mockProducts = [
     brand: "TruSkin",
     image:
       "https://images.unsplash.com/photo-1517841905240-472988babdf9?auto=format&fit=crop&w=400&q=80&fm=webp",
-    price: "$19.99",
+    price: 14300,
     description: "Brightens skin and reduces dark spots.",
   },
   {
@@ -33,7 +33,7 @@ export const mockProducts = [
     brand: "Aveeno",
     image:
       "https://images.unsplash.com/photo-1464983953574-0892a716854b?auto=format&fit=crop&w=400&q=80&fm=webp",
-    price: "$10.99",
+    price: 5700,
     description: "Soothes and hydrates dry skin.",
   },
   {
@@ -42,7 +42,7 @@ export const mockProducts = [
     brand: "The Ordinary",
     image:
       "https://images.unsplash.com/photo-1519125323398-675f0ddb6308?auto=format&fit=crop&w=400&q=80&fm=webp",
-    price: "$7.50",
+    price: 9800,
     description: "Reduces signs of aging and improves skin texture.",
   },
   {
@@ -51,7 +51,7 @@ export const mockProducts = [
     brand: "Neutrogena",
     image:
       "https://images.unsplash.com/photo-1465101046530-73398c7f28ca?auto=format&fit=crop&w=400&q=80&fm=webp",
-    price: "$11.99",
+    price: 12700,
     description: "Broad spectrum sun protection.",
   },
   {
@@ -60,7 +60,7 @@ export const mockProducts = [
     brand: "Neutrogena",
     image:
       "https://images.unsplash.com/photo-1504674900247-0877df9cc836?auto=format&fit=crop&w=400&q=80&fm=webp",
-    price: "$18.99",
+    price: 5200,
     description: "Oil-free gel moisturizer for intense hydration.",
   },
   {
@@ -69,7 +69,7 @@ export const mockProducts = [
     brand: "SkinCeuticals",
     image:
       "https://images.unsplash.com/photo-1512436991641-6745cdb1723f?auto=format&fit=crop&w=400&q=80&fm=webp",
-    price: "$92.00",
+    price: 14900,
     description: "Targets blemishes and visible signs of aging.",
   },
   {
@@ -78,7 +78,7 @@ export const mockProducts = [
     brand: "La Roche-Posay",
     image:
       "https://images.unsplash.com/photo-1515378791036-0648a3ef77b2?auto=format&fit=crop&w=400&q=80&fm=webp",
-    price: "$19.99",
+    price: 8200,
     description: "Restores healthy-looking skin.",
   },
   {
@@ -87,7 +87,7 @@ export const mockProducts = [
     brand: "SK-II",
     image:
       "https://images.unsplash.com/photo-1506744038136-46273834b3fb?auto=format&fit=crop&w=400&q=80&fm=webp",
-    price: "$99.00",
+    price: 13400,
     description: "Improves skin texture and radiance.",
   },
   {
@@ -96,7 +96,7 @@ export const mockProducts = [
     brand: "The Ordinary",
     image:
       "https://images.unsplash.com/photo-1517841905240-472988babdf9?auto=format&fit=crop&w=400&q=80&fm=webp",
-    price: "$5.90",
+    price: 7600,
     description: "Reduces blemishes and congestion.",
   },
   {
@@ -105,7 +105,7 @@ export const mockProducts = [
     brand: "First Aid Beauty",
     image:
       "https://images.unsplash.com/photo-1464983953574-0892a716854b?auto=format&fit=crop&w=400&q=80&fm=webp",
-    price: "$36.00",
+    price: 10500,
     description: "Intense hydration for dry, distressed skin.",
   },
   {
@@ -114,7 +114,7 @@ export const mockProducts = [
     brand: "Kiehl's",
     image:
       "https://images.unsplash.com/photo-1519125323398-675f0ddb6308?auto=format&fit=crop&w=400&q=80&fm=webp",
-    price: "$24.00",
+    price: 5900,
     description: "Alcohol-free toner for soothing skin.",
   },
   {
@@ -123,7 +123,7 @@ export const mockProducts = [
     brand: "Banila Co",
     image:
       "https://images.unsplash.com/photo-1465101046530-73398c7f28ca?auto=format&fit=crop&w=400&q=80&fm=webp",
-    price: "$19.00",
+    price: 14100,
     description: "Melts away makeup and impurities.",
   },
   {
@@ -132,7 +132,7 @@ export const mockProducts = [
     brand: "The Face Shop",
     image:
       "https://images.unsplash.com/photo-1504674900247-0877df9cc836?auto=format&fit=crop&w=400&q=80&fm=webp",
-    price: "$8.50",
+    price: 8800,
     description: "Brightens and cleanses skin.",
   },
   {
@@ -141,7 +141,7 @@ export const mockProducts = [
     brand: "COSRX",
     image:
       "https://images.unsplash.com/photo-1512436991641-6745cdb1723f?auto=format&fit=crop&w=400&q=80&fm=webp",
-    price: "$21.00",
+    price: 9700,
     description: "Repairs and hydrates skin barrier.",
   },
   {
@@ -150,7 +150,7 @@ export const mockProducts = [
     brand: "Innisfree",
     image:
       "https://images.unsplash.com/photo-1515378791036-0648a3ef77b2?auto=format&fit=crop&w=400&q=80&fm=webp",
-    price: "$27.00",
+    price: 12300,
     description: "Hydrating serum with green tea extract.",
   },
   {
@@ -159,7 +159,7 @@ export const mockProducts = [
     brand: "Glow Recipe",
     image:
       "https://images.unsplash.com/photo-1506744038136-46273834b3fb?auto=format&fit=crop&w=400&q=80&fm=webp",
-    price: "$45.00",
+    price: 5400,
     description: "Hydrating overnight mask for glowing skin.",
   },
   {
@@ -168,7 +168,7 @@ export const mockProducts = [
     brand: "COSRX",
     image:
       "https://images.unsplash.com/photo-1517841905240-472988babdf9?auto=format&fit=crop&w=400&q=80&fm=webp",
-    price: "$25.00",
+    price: 11500,
     description: "Moisturizer for repairing and soothing skin.",
   },
   {
@@ -177,7 +177,7 @@ export const mockProducts = [
     brand: "Klairs",
     image:
       "https://images.unsplash.com/photo-1464983953574-0892a716854b?auto=format&fit=crop&w=400&q=80&fm=webp",
-    price: "$23.00",
+    price: 6700,
     description: "Brightens and evens skin tone.",
   },
   {
@@ -186,7 +186,7 @@ export const mockProducts = [
     brand: "Purito",
     image:
       "https://images.unsplash.com/photo-1519125323398-675f0ddb6308?auto=format&fit=crop&w=400&q=80&fm=webp",
-    price: "$18.00",
+    price: 15300,
     description: "Calms and strengthens sensitive skin.",
   },
   {
@@ -195,7 +195,7 @@ export const mockProducts = [
     brand: "Dr. Jart+",
     image:
       "https://images.unsplash.com/photo-1465101046530-73398c7f28ca?auto=format&fit=crop&w=400&q=80&fm=webp",
-    price: "$39.00",
+    price: 6000,
     description: "Strengthens skin barrier and locks in moisture.",
   },
   {
@@ -204,7 +204,7 @@ export const mockProducts = [
     brand: "Dior",
     image:
       "https://images.unsplash.com/photo-1504674900247-0877df9cc836?auto=format&fit=crop&w=400&q=80&fm=webp",
-    price: "$69.00",
+    price: 14200,
     description: "Lightweight hydration for radiant skin.",
   },
   {
@@ -213,7 +213,7 @@ export const mockProducts = [
     brand: "Clinique",
     image:
       "https://images.unsplash.com/photo-1512436991641-6745cdb1723f?auto=format&fit=crop&w=400&q=80&fm=webp",
-    price: "$39.50",
+    price: 9800,
     description: "Long-lasting hydration for all skin types.",
   },
   {
@@ -222,7 +222,7 @@ export const mockProducts = [
     brand: "Missha",
     image:
       "https://images.unsplash.com/photo-1515378791036-0648a3ef77b2?auto=format&fit=crop&w=400&q=80&fm=webp",
-    price: "$49.00",
+    price: 7300,
     description: "Improves skin tone and texture.",
   },
   {
@@ -231,7 +231,7 @@ export const mockProducts = [
     brand: "COSRX",
     image:
       "https://images.unsplash.com/photo-1506744038136-46273834b3fb?auto=format&fit=crop&w=400&q=80&fm=webp",
-    price: "$28.00",
+    price: 12900,
     description: "Nourishes and revitalizes dull skin.",
   },
   {
@@ -240,7 +240,7 @@ export const mockProducts = [
     brand: "COSRX",
     image:
       "https://images.unsplash.com/photo-1517841905240-472988babdf9?auto=format&fit=crop&w=400&q=80&fm=webp",
-    price: "$20.00",
+    price: 5600,
     description: "Brightens and softens skin overnight.",
   },
   {
@@ -249,7 +249,7 @@ export const mockProducts = [
     brand: "Paula's Choice",
     image:
       "https://images.unsplash.com/photo-1464983953574-0892a716854b?auto=format&fit=crop&w=400&q=80&fm=webp",
-    price: "$29.00",
+    price: 11200,
     description: "Oil-free hydration for sensitive skin.",
   },
   {
@@ -258,7 +258,7 @@ export const mockProducts = [
     brand: "Nature Republic",
     image:
       "https://images.unsplash.com/photo-1519125323398-675f0ddb6308?auto=format&fit=crop&w=400&q=80&fm=webp",
-    price: "$16.00",
+    price: 8700,
     description: "Moisturizes and refreshes combination skin.",
   },
   {
@@ -267,7 +267,7 @@ export const mockProducts = [
     brand: "Laneige",
     image:
       "https://images.unsplash.com/photo-1465101046530-73398c7f28ca?auto=format&fit=crop&w=400&q=80&fm=webp",
-    price: "$38.00",
+    price: 10100,
     description: "Deep hydration for soft, smooth skin.",
   },
 ];

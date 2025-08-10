@@ -21,9 +21,9 @@ const Products = () => {
       .includes(filterName.toLowerCase());
     const matchesBrand = !filterBrand || product.brand === filterBrand;
     const matchesMinPrice =
-      !filterMinPrice || Number(product.price) >= parseFloat(filterMinPrice);
+      !filterMinPrice || product.price >= parseFloat(filterMinPrice);
     const matchesMaxPrice =
-      !filterMaxPrice || Number(product.price) <= parseFloat(filterMaxPrice);
+      !filterMaxPrice || product.price <= parseFloat(filterMaxPrice);
     return matchesName && matchesBrand && matchesMinPrice && matchesMaxPrice;
   });
 
@@ -128,11 +128,9 @@ const Products = () => {
           <ProductsList
             products={filteredProducts.map((product) => ({
               ...product,
-              price:
-                typeof product.price === "string"
-                  ? parseFloat(product.price)
-                  : product.price,
+              // price is already a number, no conversion needed
             }))}
+            currency="₦"
           />
         ) : (
           <div className="text-center py-20">
